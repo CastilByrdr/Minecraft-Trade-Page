@@ -3,7 +3,7 @@
 <template>
   <div class="container">
     <div class="header">
-        <img id="title" src="images/HeaderTitle.png" alt="Minecraft Marketplace: The online item-trading hub for Minecraft servers!" class="center">
+        <img id="title" src="graphics/HeaderTitle.png" alt="Minecraft Marketplace: The online item-trading hub for Minecraft servers!" class="center">
         <div class="navbar">
             <ul>
                 <li class="left"><a id="home" href="homepage.html">Home</a></li>
