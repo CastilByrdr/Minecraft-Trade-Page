@@ -2,7 +2,6 @@
 
 <template>
   <div class="container">
-    <body>
     <div class="header">
         <img id="title" src="images/Header Title.png" alt="Minecraft Marketplace: The online item-trading hub for Minecraft servers!" class="center">
         <div class="navbar">
