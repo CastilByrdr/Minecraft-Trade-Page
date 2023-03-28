@@ -80,8 +80,6 @@ function isEmailValid(email: string | null): boolean {
 </script>
 
 <template>
-  <div class="register">
-    <h1 class="title">Register Page</h1>
     <div class="container is-fluid">
       <div class="columns is-justify-content-center">
         <div
@@ -181,12 +179,7 @@ function isEmailValid(email: string | null): boolean {
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style scoped>
-.register {
-  font-family: "Courier New", Courier, monospace;
-  height: 100%;
-}
 </style>

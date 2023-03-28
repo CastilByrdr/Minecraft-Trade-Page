@@ -36,8 +36,6 @@ function loginApi(username: string) {
 </script>
 
 <template>
-  <div class="login">
-    <h1 class="title">Login Page</h1>
     <div class="container is-fluid">
       <div class="columns is-justify-content-center">
         <div
@@ -101,14 +99,10 @@ function loginApi(username: string) {
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <style scoped>
-.login {
-    font-family: 'Courier New', Courier, monospace;
-}
-
 .control is-flex {
     background-color: #267831;
     font-size: 16px;
