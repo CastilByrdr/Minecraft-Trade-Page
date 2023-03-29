@@ -97,7 +97,7 @@ form.serverlist {
     margin-right: 45px;
 }
 
-button {
+.add-server {
     font-family: "Minecraft";
     color: white;
     height: 40px;
