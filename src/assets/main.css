@@ -2,111 +2,18 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
 
 @font-face {
-    font-family: "Minecraft";
-    src: url(minecraft-font/MinecraftRegular-Bmg3.otf);
+  font-family: "Minecraft";
+  src: url(minecraft-font/MinecraftRegular-Bmg3.otf);
 }
 @font-face {
-    font-family: "Minecraft-Bold";
-    src: url(minecraft-font/MinecraftBold-nMK1.otf);
+  font-family: "Minecraft-Bold";
+  src: url(minecraft-font/MinecraftBold-nMK1.otf);
 }
 @font-face {
-    font-family: "Minecraft-Title";
-    src: url(minecraft-ten-font/MinecraftTen-VGORe.ttf);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: right;
-}
-
-li.left {
-    float: left;
-}
-
-li.right {
-    float: right;
-}
-
-.navbar a {
-    font-family: "Minecraft", sans-serif;
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 25px 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-/*.navbar a:hover {
-    text-shadow: darkolivegreen;
-}*/
-
-.header {
-    height: 200px;
-}
-
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-h1 {
-    font-family: "Minecraft", sans-serif;
-    color: white;
-    width: fit-content;
+  font-family: "Minecraft-Title";
+  src: url(minecraft-ten-font/MinecraftTen-VGORe.ttf);
 }
 
 body {
-    background: url("images/sky.jpg");
-    background-size: cover;
-    position: relative;
-    height: 100vh;
-    font-family: "Minecraft";
-}
-
-.welcome {
-    padding-left: 200px;
-    width: fit-content;
-    margin: 0;
-}
-
-form {
-    box-shadow: 3px 3px #5E3E34;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #956F4C;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-top: 7px;
-    
-    display: inline-block;
-}
-
-form.serverlist {
-    float: right;
-    margin: auto;
-    border-radius: 10px;
-    margin-right: 45px;
-}
-
-.add-server {
-    font-family: "Minecraft";
-    color: white;
-    height: 40px;
-    width: 250px;
-    text-decoration: none;
-    text-align: center;
-    background: url('images/btn.png')
-}
-
-.add-server:hover {
-    background: url('images/btn-hover.png');
+  font-family: "Minecraft";
 }
