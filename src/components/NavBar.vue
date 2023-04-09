@@ -39,7 +39,7 @@ function logOutApi() {
 
     <div id="navbar" class="navbar-menu" :class="{ 'is-active': isMenuActive }">
       <div class="navbar-start">
-        <router-link to="/home" class="navbar-item">
+        <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
         <router-link to="/index" class="navbar-item">
@@ -62,12 +62,21 @@ function logOutApi() {
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              <button v-if="isUserLoggedIn" class="button">
-                Welcome {{ authState.username }}
+              <button v-if="isUserLoggedIn" class="button has-text-black">
+                <span>{{ authState.username }}</span>
               </button>
-              <button v-if="isUserLoggedIn" class="button" @click="onLogout()">
-                Log Out
+            </p>
+            <p class="control">
+              <button
+                v-if="isUserLoggedIn"
+                class="button is-primary"
+                @click="onLogout()"
+              >
+                <span>Log Out</span>
               </button>
+            </p>
+
+            <p class="control">
               <router-link
                 v-if="!isUserLoggedIn"
                 to="/register"
@@ -79,6 +88,7 @@ function logOutApi() {
                 <span>Register</span>
               </router-link>
             </p>
+
             <p class="control">
               <router-link
                 v-if="!isUserLoggedIn"
@@ -99,6 +109,9 @@ function logOutApi() {
 </template>
 
 <style scoped>
+button {
+  font-family: "Minecraft";
+}
 .navbar {
   background-color: rgb(105, 172, 235);
 }

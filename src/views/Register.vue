@@ -81,7 +81,6 @@ function isEmailValid(email: string | null): boolean {
 </script>
 
 <template>
-  <NavBar />
   <div class="container is-fluid mt-5">
     <div class="columns is-justify-content-center">
       <div
