@@ -5,7 +5,7 @@ import { reactive } from "vue";
 import { authState } from "../state/user";
 
 const registerState = reactive({
-  username: "lucy",
+  username: "mzhunio",
   password: "12345",
   rePassword: "12345",
   email: "a@a.com",
