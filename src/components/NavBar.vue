@@ -72,7 +72,7 @@ function logOutApi() {
                 class="button is-primary"
                 @click="onLogout()"
               >
-                <span>Log Out</span>
+                <span> Log Out</span>
               </button>
             </p>
 
