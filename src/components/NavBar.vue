@@ -43,7 +43,7 @@ function logOutApi() {
           <span>Home</span>
         </router-link>
         <router-link to="/index" class="navbar-item">
-          <span>Index</span>
+          <span>Profile</span>
         </router-link>
 
         <div class="navbar-item has-dropdown is-hoverable">
