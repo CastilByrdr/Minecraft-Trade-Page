@@ -2,18 +2,14 @@
 
 <template>
   <div class="container">
-    <div class="header">
-       
-    </div>
-    <div class="welcome m-4">
-        <h1 class="title">Welcome, user!</h1>
-    </div>
+    <h1 class="title m-4">Welcome, user!</h1>
   
     <div class="card server-list">
       <header class="card-header">
         <h3 class="title has-text-centered m-4">Server List</h3>
       </header>
       <div class="content">
+        <a href="./serverpage" class="m-4">Temp Server Page</a>
         <button class="button m-4 is-success">Add Server</button>
       </div>
     </div>

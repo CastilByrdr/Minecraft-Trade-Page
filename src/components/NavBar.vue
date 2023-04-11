@@ -42,7 +42,7 @@ function logOutApi() {
         <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
-        <router-link to="/index" class="navbar-item">
+        <router-link to="/profile" class="navbar-item">
           <span>Profile</span>
         </router-link>
 
@@ -50,8 +50,8 @@ function logOutApi() {
           <a class="navbar-link"> Search </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item"> About </a>
-            <a class="navbar-item"> Jobs </a>
+            <a class="navbar-item"> Items </a>
+            <a class="navbar-item"> Users </a>
             <hr class="navbar-divider" />
             <a class="navbar-item"> Report an issue </a>
           </div>
