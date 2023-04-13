@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from "vue-router";
 
 const foods = [
   {
+    id: "366",
     username: "mzhunio",
     foodName: "Cooked Chicken",
     imageSrc: "/subcategories/food/cooked-food/cooked-chicken.png",
@@ -10,6 +11,7 @@ const foods = [
     dateTime: "11:09 PM - 1 May 2023",
   },
   {
+    id: "350",
     username: "kfugon",
     foodName: "Cooked Cod",
     imageSrc: "/subcategories/food/cooked-food/cooked-cod.png",
@@ -17,6 +19,7 @@ const foods = [
     dateTime: "0:09 PM - 23 May 2023",
   },
   {
+    id: "324",
     username: "fiona",
     foodName: "Cooked Mutton",
     imageSrc: "/subcategories/food/cooked-food/cooked-mutton.png",
@@ -24,6 +27,7 @@ const foods = [
     dateTime: "10:09 PM - 2 May 2023",
   },
   {
+    id: "320",
     username: "rzhunio",
     foodName: "Cooked Porkchop",
     imageSrc: "/subcategories/food/cooked-food/cooked-porkchop.png",
@@ -31,6 +35,7 @@ const foods = [
     dateTime: "10:09 PM - 2 May 2023",
   },
   {
+    id: "412",
     username: "lzhunio",
     foodName: "Cooked Rabbit",
     imageSrc: "/subcategories/food/cooked-food/cooked-rabbit.png",
@@ -38,8 +43,9 @@ const foods = [
     dateTime: "10:09 PM - 2 May 2023",
   },
   {
+    id: "350-1",
     username: "fiona",
-    foodName: "Cooked Salcom",
+    foodName: "Cooked Salmon",
     imageSrc: "/subcategories/food/cooked-food/cooked-salmon.png",
     quantity: "5",
     dateTime: "10:09 PM - 2 May 2023",
@@ -48,7 +54,6 @@ const foods = [
 </script>
 
 <template>
-
   <div class="card is-justify-content-center">
     <header class="card-header">
       <p class="card-header-title">List of Foods</p>
@@ -68,7 +73,7 @@ const foods = [
         60%
       </progress>
 
-      <div class="food" v-for="food in foods">
+      <div class="food" v-for="food in foods" :key="food.id">
         <h3>{{ food.foodName }}</h3>
         <img :src="food.imageSrc" :alt="food.foodName" class="image" />
         <p>{{ food.username }}</p>
