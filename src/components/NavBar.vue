@@ -6,6 +6,11 @@ import { authState } from "../state/user";
 const isMenuActive = ref(false);
 const isUserLoggedIn = computed(() => !!authState.username.value);
 
+function toggleMenu() {
+  isMenuActive.value = !isMenuActive.value;
+  console.log({ isMenuActive });
+}
+
 function onLogout(): void {
   logOutApi();
 }
@@ -34,7 +39,15 @@ function logOutApi() {
   </nav>
   <nav class="navbar is-transparent">
     <div class="navbar-brand">
-      <div class="navbar-burger" data-target="navbar"></div>
+      <div
+        class="navbar-burger"
+        :class="{ 'is-active': isMenuActive }"
+        @click="toggleMenu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
 
     <div id="navbar" class="navbar-menu" :class="{ 'is-active': isMenuActive }">
@@ -51,7 +64,9 @@ function logOutApi() {
 
           <div class="navbar-dropdown">
             <a class="navbar-item"> Items </a>
-            <a class="navbar-item"> Users </a>
+            <router-link to="/users" class="navbar-item">
+              <span>Users</span>
+            </router-link>
             <hr class="navbar-divider" />
             <a class="navbar-item"> Report an issue </a>
           </div>

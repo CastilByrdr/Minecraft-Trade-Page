@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import router from "@/router";
 import { authState } from "@/state/user";
-import NavBar from "@/components/NavBar.vue";
+import { def } from "@vue/shared";
+import axios from "axios";
 
 let username = "mzhunio";
 let password = "12345";
@@ -34,6 +35,7 @@ function loginApi(username: string) {
   //   router.push('/');
   // }, 3000);
 }
+
 </script>
 
 <template>
@@ -108,7 +110,6 @@ function loginApi(username: string) {
   font-size: 16px;
   transition: none;
 }
-
 
 .button {
   box-shadow: 3px 3px #42a168;
