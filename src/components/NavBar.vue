@@ -55,7 +55,7 @@ function logOutApi() {
         <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
-        <router-link to="/profile" class="navbar-item">
+        <router-link to="/profile" class="navbar-item" v-if="isUserLoggedIn">
           <span>Profile</span>
         </router-link>
 
@@ -64,7 +64,7 @@ function logOutApi() {
 
           <div class="navbar-dropdown">
             <a class="navbar-item"> Items </a>
-            <router-link to="/users" class="navbar-item">
+            <router-link to="/users" class="navbar-item" v-if="isUserLoggedIn">
               <span>Users</span>
             </router-link>
             <hr class="navbar-divider" />
