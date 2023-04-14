@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavBar from "@/components/NavBar.vue";
+import axios from 'axios';
 import router from "@/router";
 import { reactive } from "vue";
 import { authState } from "../state/user";
@@ -78,6 +78,18 @@ function isEmailValid(email: string | null): boolean {
 
   return !!isEmailValid;
 }
+
+// async function createUser(username: string, email: string, password: string, isAdmin: boolean) {
+//   const res = await axios.post("http://localhost:3000/user", {
+//     username,
+//     email,
+//     password,
+//     isAdmin,
+//   });
+
+//   await createUser(username, email, password, isAdmin);
+// }
+
 </script>
 
 <template>

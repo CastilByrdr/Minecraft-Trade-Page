@@ -1,44 +1,60 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import axios from "axios";
+import { users } from "../state/user";
+
+async function getUsers() {
+  const res = await axios.get("http://localhost:3000/user");
+
+  users.value = res.data;
+}
+
+getUsers();
+
+</script>
 
 <template>
-  
-  <table class="table is-bordered is-striped is-narrow is-hoverable">
-    <thead>
-        <tr>
-            <th>User ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Last login</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>karoz</td>
-            <td>karo@hotmail.com</td>
-            <td>123</td>
-            <td>12/30/2022</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>michi</td>
-            <td>michi@hotmail.com</td>
-            <td>456</td>
-            <td>11/30/2022</td>
-        </tr>
-    </tbody>
-  </table>
-  
+  <section class="section">
+    <div class="columns is-centered">
+      <div class="column is-narrow">
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Last Active</th>
+            </tr>
+          </thead>
+          <tbody v-for="user in users">
+            <tr>
+              <td>
+                <abbr title="id">{{ user.id }}</abbr>
+              </td>
+              <td>
+                <abbr title="username">{{ user.username }}</abbr>
+              </td>
+              <td>
+                <abbr title="email">{{ user.email }}</abbr>
+              </td>
+              <td>
+                <abbr title="isAdmin">{{ user.isAdmin }}</abbr>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-
- table, th, td {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
- }
-
-
+table,
+th,
+td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 </style>
