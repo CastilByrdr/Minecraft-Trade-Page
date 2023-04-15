@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import axios from 'axios';
+import axios from "axios";
 import router from "@/router";
 import { reactive } from "vue";
 import { authState } from "../state/user";
@@ -87,8 +87,23 @@ function isEmailValid(email: string | null): boolean {
 //     isAdmin,
 //   });
 
-//   await createUser(username, email, password, isAdmin);
+//   createUser(username, email, password, isAdmin);
 // }
+
+
+const apiUrl = "https://localhost:3000/register";
+
+// Make the POST request
+axios
+  .post(apiUrl, registerState)
+  .then((response) => {
+    // Handle success
+    console.log("Registration successful:", response.data);
+  })
+  .catch((error) => {
+    // Handle error
+    console.error("Registration failed:", error);
+  });
 
 </script>
 
