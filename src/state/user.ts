@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const username = ref("");
 
@@ -11,3 +11,5 @@ export const users = ref([
     { id: 1, username: "rzhunio", email: "rzhunio@a.com", isAdmin: false },
     { id: 2, username: "kzhunio", email: "kzhunio@a.com", isAdmin: false },
   ]);
+
+export const isUserLoggedIn = computed(() => !!authState.username.value);

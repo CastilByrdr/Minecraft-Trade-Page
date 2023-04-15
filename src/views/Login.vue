@@ -115,4 +115,7 @@ function loginApi(username: string) {
   box-shadow: 3px 3px #42a168;
   font-family: "Minecraft";
 }
+.input {
+    font-family: "Minecraft";
+}
 </style>

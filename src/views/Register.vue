@@ -199,4 +199,7 @@ function isEmailValid(email: string | null): boolean {
   box-shadow: 3px 3px #42a168;
   font-family: "Minecraft";
 }
+.input {
+    font-family: "Minecraft";
+}
 </style>

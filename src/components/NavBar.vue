@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import router from "@/router";
-import { computed, ref } from "vue";
-import { authState } from "../state/user";
+import { ref } from "vue";
+import { authState, isUserLoggedIn } from "../state/user";
 
 const isMenuActive = ref(false);
-const isUserLoggedIn = computed(() => !!authState.username.value);
 
 function toggleMenu() {
   isMenuActive.value = !isMenuActive.value;
@@ -55,7 +54,7 @@ function logOutApi() {
         <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
-        <router-link to="/profile" class="navbar-item" v-if="isUserLoggedIn">
+        <router-link to="/userProfile" class="navbar-item" v-if="isUserLoggedIn">
           <span>Profile</span>
         </router-link>
 
