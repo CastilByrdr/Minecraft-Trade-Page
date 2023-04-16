@@ -3,6 +3,7 @@ import axios from "axios";
 import router from "@/router";
 import { reactive } from "vue";
 import { authState } from "../state/user";
+import { register } from "@/service/AuthService";
 
 const registerState = reactive({
   username: "mzhunio",
@@ -11,12 +12,12 @@ const registerState = reactive({
   email: "a@a.com",
 });
 
-function onRegisterClicked(
+async function onRegisterClicked(
   username: string,
   password: string,
   rePassword: string,
   email: string
-): void {
+): Promise<void> {
   const isFormValid =
     isUsernameValid(username) &&
     isPasswordValid(password, rePassword) &&
@@ -26,18 +27,12 @@ function onRegisterClicked(
     return;
   }
 
-  registerApi(username, password, email);
-}
-
-function registerApi(username: string, password: string, email: string) {
-  console.log("Registering user...");
-  setTimeout(() => onRegistrationSuccess(username), 3000);
-}
-
-function onRegistrationSuccess(username: string) {
-  console.log("Registration success");
-  authState.username.value = username;
-  router.push("/");
+  try {
+    authState.user.value = await register({ username, password, email, isAdmin: false });
+  } catch (error) {
+    authState.user.value = null;
+    // TODO: ShowErrorMessage
+  }
 }
 
 function isUsernameValid(username: string): boolean {
@@ -78,32 +73,6 @@ function isEmailValid(email: string | null): boolean {
 
   return !!isEmailValid;
 }
-
-// async function createUser(username: string, email: string, password: string, isAdmin: boolean) {
-//   const res = await axios.post("http://localhost:3000/user", {
-//     username,
-//     email,
-//     password,
-//     isAdmin,
-//   });
-
-//   createUser(username, email, password, isAdmin);
-// }
-
-
-const apiUrl = "https://localhost:3000/register";
-
-// Make the POST request
-axios
-  .post(apiUrl, registerState)
-  .then((response) => {
-    // Handle success
-    console.log("Registration successful:", response.data);
-  })
-  .catch((error) => {
-    // Handle error
-    console.error("Registration failed:", error);
-  });
 
 </script>
 

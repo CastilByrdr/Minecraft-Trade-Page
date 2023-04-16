@@ -1,13 +1,12 @@
+import type { User } from "@/model/UserModel";
 import { ref } from "vue";
 
 const username = ref("");
+const user = ref<User | null>(null);
 
 export const authState = {
   username,
+  user,
 };
 
-export const users = ref([
-    { id: 0, username: "mzhunio", email: "mzhunio@a.com", isAdmin: true },
-    { id: 1, username: "rzhunio", email: "rzhunio@a.com", isAdmin: false },
-    { id: 2, username: "kzhunio", email: "kzhunio@a.com", isAdmin: false },
-  ]);
+export const users = ref<User[]>([]);

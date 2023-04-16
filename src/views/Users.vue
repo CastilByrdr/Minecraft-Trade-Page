@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { users } from "../state/user";
 import { getAllUsers } from "@/service/UserService";
+import { users } from "../state/user";
 
-// async function getUsers() {
-//   const res = await axios.get("http://localhost:3000/user");
+async function getUsers() {
+  const allUsers = await getAllUsers();
 
-//   users.value = res.data;
-// }
-getAllUsers();
+  users.value = allUsers;
+}
+
+getUsers();
 
 </script>
 
