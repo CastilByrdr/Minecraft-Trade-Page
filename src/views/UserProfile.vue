@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { authState, isUserLoggedIn } from "../state/user";
+import { getUser } from "@/service/UserService";
+import { users } from "@/state/user";
+
+// const userId = "";
+
+// async function getUserInfo() {
+//   const user = await getUser();
+
+//   users.value = user;
+// }
+
+// getUserInfo();
+
 </script>
 
 <template>
@@ -22,7 +34,7 @@ import { authState, isUserLoggedIn } from "../state/user";
               <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
-                  <input class="input" type="username" placeholder="username"/>
+                  <input class="input" type="username" placeholder="{{ }}"/>
                 </div>
               </div>
             </div>

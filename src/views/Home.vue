@@ -1,10 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { isUserLoggedIn } from "../state/user";
+</script>
 
 <template>
   <div class="container">
     <h1 class="title m-4">Welcome, user!</h1>
   
-    <div class="card server-list">
+    <div class="card server-list" v-if="isUserLoggedIn">
       <header class="card-header">
         <h3 class="title has-text-centered m-4">Server List</h3>
       </header>
