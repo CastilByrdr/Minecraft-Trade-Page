@@ -1,4 +1,5 @@
 import type { User } from "@/model/UserModel";
+import { computed, ref } from "vue";
 
 const username = ref("");
 const user = ref<User | null>(null);
@@ -8,5 +9,5 @@ export const authState = {
   user,
 };
 
-export const isUserLoggedIn = computed(() => !!authState.username.value);
 export const users = ref<User[]>([]);
+export const isUserLoggedIn = computed(() => !!authState.username.value);
