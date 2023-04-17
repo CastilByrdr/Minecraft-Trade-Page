@@ -7,7 +7,6 @@ import Users from '@/views/Users.vue'
 import ServerPage from '@/views/ServerPage.vue'
 import CreatePost from '@/components/CreatePost.vue'
 import UserProfile from '@/views/UserProfile.vue'
-import ListFoods from '@/views/ListFoods.vue'
 import ItemCategories from '@/views/ItemCategories.vue'
 import TradeItems from '@/views/TradeItems.vue'
 
