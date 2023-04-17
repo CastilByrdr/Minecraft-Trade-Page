@@ -10,6 +10,9 @@
       </header>
       <div class="content">
         <a href="./serverpage" class="m-4">Temp Server Page</a>
+        <router-link to=“/serverPage”>
+          <span>ServerPage</span>
+        </router-link>
         <button class="button m-4 is-success">Add Server</button>
       </div>
     </div>

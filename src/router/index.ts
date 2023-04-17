@@ -5,6 +5,7 @@ import Register from '@/views/Register.vue'
 import ListFoods from '@/views/ListFoods.vue'
 import Users from '@/views/Users.vue'
 import UserProfile from '@/views/UserProfile.vue'
+import ServerPage from '@/views/ServerPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -1,11 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <!-- <div class="container">
+  <div class="container">
     <h3 class="title">ServerPage</h3>
     <h1 class="title m-4">Welcome to Server Name's marketplace!</h1>
 
-    <div class="card is-justify-content-center">
+<!--    <div class="card is-justify-content-center">
     <header class="card-header">
       <p class="card-header-title">Open Listings</p>
     </header>
@@ -18,7 +18,7 @@
         60%
       </progress>
 
-      <div class="listings" v-for="product in products" :key="product.id">
+  <div class="listings" v-for="product in products" :key="product.id">
         <h3>{{ product.itemName }}</h3>
         <img :src="product.imageURL" :alt="product.itemName" class="image" />
         <p>{{ product.postedBy }}</p>
@@ -36,8 +36,8 @@
         </footer>
       </div>
     </div>
+  </div>-->
   </div>
-  </div> -->
 </template>
 
 <style scoped></style>
