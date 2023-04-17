@@ -4,8 +4,12 @@ import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import ListFoods from '@/views/ListFoods.vue'
 import Users from '@/views/Users.vue'
-import UserProfile from '@/views/UserProfile.vue'
 import ServerPage from '@/views/ServerPage.vue'
+import CreatePost from '@/components/CreatePost.vue'
+import UserProfile from '@/views/UserProfile.vue'
+import ListFoods from '@/views/ListFoods.vue'
+import ItemCategories from '@/views/ItemCategories.vue'
+import TradeItems from '@/views/TradeItems.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,7 +51,23 @@ const router = createRouter({
       path:'/userProfile',
       name: "userProfile",
       component: UserProfile
-    }
+    },
+    {
+      path:'/createPost',
+      name: 'createPost',
+      component: CreatePost
+    }, 
+    {
+      path: '/itemCategories',
+      name: 'itemCategories',
+      component: ItemCategories
+    }, 
+    {
+      path: '/tradeItems',
+      name: 'tradeItems',
+      component: TradeItems
+    },
+    
   ]
 })
 
