@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import axios from "axios";
+import { getAllUsers } from "@/service/UserService";
 import { users } from "../state/user";
+import { formatRelative } from "date-fns";
+
 
 async function getUsers() {
-  const res = await axios.get("http://localhost:3000/user");
+  const allUsers = await getAllUsers();
 
-  users.value = res.data;
+  users.value = allUsers;
 }
 
 getUsers();
@@ -39,6 +41,9 @@ getUsers();
               </td>
               <td>
                 <abbr title="isAdmin">{{ user.isAdmin }}</abbr>
+              </td>
+               <td>
+                <abbr title="lastActive">{{ formatRelative(user.lastActive, new Date()) }}</abbr>
               </td>
               <td></td>
             </tr>
