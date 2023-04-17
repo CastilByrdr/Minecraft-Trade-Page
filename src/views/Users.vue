@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { getAllUsers } from "@/service/UserService";
 import { users } from "../state/user";
+import { formatRelative } from "date-fns";
+
 
 async function getUsers() {
   const allUsers = await getAllUsers();
@@ -39,6 +41,9 @@ getUsers();
               </td>
               <td>
                 <abbr title="isAdmin">{{ user.isAdmin }}</abbr>
+              </td>
+               <td>
+                <abbr title="lastActive">{{ formatRelative(user.lastActive, new Date()) }}</abbr>
               </td>
               <td></td>
             </tr>

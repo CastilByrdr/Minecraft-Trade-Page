@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import axios from "axios";
-import router from "@/router";
 import { reactive } from "vue";
 import { authState } from "../state/user";
 import { register } from "@/service/AuthService";
@@ -28,7 +26,7 @@ async function onRegisterClicked(
   }
 
   try {
-    authState.user.value = await register({ username, password, email, isAdmin: false });
+    authState.user.value = await register({ username, password, email, isAdmin: false, lastActive: "" });
   } catch (error) {
     authState.user.value = null;
     // TODO: ShowErrorMessage
