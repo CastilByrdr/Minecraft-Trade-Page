@@ -11,63 +11,51 @@ interface Category {
 const categories = ref<Category[]>([
   {
     name: "Food",
-    imagePath:
-      "https://img.game8.co/3526948/3d43677a8c7dd9b636e438e12b2f4287.png/show",
+    imagePath: "/src/assets/categories/food.png",
   },
   {
     name: "Tools",
-    imagePath:
-      "https://j-img.game8.co/1652483/9273ae96c9e284c3526bb73fa7947aa6.png/show?1527556514",
+    imagePath: "/src/assets/categories/tools.png",
   },
   {
     name: "Armor",
-    imagePath:
-      "https://j-img.game8.co/1652516/1dd6206cad04eee6b73b051b2db934af.png/show?1527556516",
+    imagePath: "/src/assets/categories/armor.png",
   },
   {
     name: "Arrows",
-    imagePath:
-      "https://j-img.game8.co/1652466/b6a3cbc380b0bda22ea5419ed2c18288.png/show?1527556513",
+    imagePath: "/src/assets/categories/arrows.png",
   },
   {
     name: "Weapons",
-    imagePath:
-      "https://j-img.game8.co/1652481/72952058c9cb7f74e0f5794d81a19854.png/show?1527556514",
+    imagePath: "/src/assets/categories/weapons.png",
   },
   {
     name: "Materials",
-    imagePath:
-      "https://j-img.game8.co/1652470/3ff71a3603600d697f9f45724c48285a.png/show?1527556513",
+    imagePath: "/src/assets/categories/materials.png",
   },
   {
     name: "Decorations",
-    imagePath:
-      "https://j-img.game8.co/1652705/d13f99635bb8c8600c8da3905b8442f5.png/show?1527556528",
+    imagePath: "/src/assets/categories/decorations.png",
   },
   {
     name: "Transportation",
-    imagePath:
-      "https://j-img.game8.co/1652534/94a0636939aef0410aa224988025e657.png/show?1527556517",
+    imagePath: "/src/assets/categories/transportation.png",
   },
   {
     name: "Potions",
-    imagePath:
-      "https://img.game8.co/3527571/f252bc436cd7283b068c01fc2802f7f8.png/show",
+    imagePath: "/src/assets/categories/potions.png",
   },
   {
     name: "Mog Eggs",
-    imagePath:
-      "https://j-img.game8.co/1652663/2ec3b3e0e5e2bf46442aabe885b96ff5.png/show?1527556526",
+    imagePath: "/src/assets/categories/mog-eggs.png",
   },
   {
     name: "Records",
-    imagePath:
-      "https://j-img.game8.co/1652974/5e1bafdf5dcce4c4fd5b252dd4422837.png/show?1527556544",
+    imagePath: "/src/assets/categories/records.png",
   },
   {
     name: "Dyes",
-    imagePath:
-      "https://img.game8.co/3527352/efbacf3f3c927b9535ccded9716c1942.png/show",
+    imagePath: "/src/assets/categories/dyes.png",
   },
 ]);
 </script>
