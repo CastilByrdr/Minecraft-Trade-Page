@@ -11,7 +11,6 @@ import { isUserLoggedIn } from "../state/user";
         <h3 class="title has-text-centered m-4">Server List</h3>
       </header>
       <div class="content">
-        <a href="./serverpage" class="m-4">Temp Server Page</a>
         <router-link to=“/serverPage”>
           <span>ServerPage</span>
         </router-link>
