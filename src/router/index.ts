@@ -47,6 +47,11 @@ const router = createRouter({
       component: Users
     },
     {
+      path:'/serverPage',
+      name: "serverPage",
+      component: ServerPage
+    },
+    {
       path:'/userProfile',
       name: "userProfile",
       component: UserProfile
@@ -65,7 +70,7 @@ const router = createRouter({
       path: '/tradeItems',
       name: 'tradeItems',
       component: TradeItems
-    },
+    }
     
   ]
 })
