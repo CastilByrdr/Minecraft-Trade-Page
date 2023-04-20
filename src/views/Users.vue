@@ -23,7 +23,7 @@ getUsers();
               <th>User ID</th>
               <th>Username</th>
               <th>Email</th>
-              <th>Password</th>
+              <th>Is Admin</th>
               <th>Last Active</th>
             </tr>
           </thead>

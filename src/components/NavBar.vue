@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import router from "@/router";
+import { logout } from "@/service/AuthService";
 import { ref } from "vue";
-import { authState, isUserLoggedIn } from "../state/user";
+import { isUserLoggedIn, user } from "../state/user";
+import router from "@/router";
+import { LocalStorage } from "@/service/LocalStorageService";
 
 const isMenuActive = ref(false);
 
@@ -10,20 +12,13 @@ function toggleMenu() {
   console.log({ isMenuActive });
 }
 
-function onLogout(): void {
-  logOutApi();
+async function onLogout() {
+  await logout(user.value!.id);
+  user.value = null;
+  LocalStorage.removeCurrentUser();
+  router.push("/");
 }
-
-function logOutApi() {
-  console.log("Logging out...");
-
-  setTimeout(() => {
-    console.log("Logged out successfully");
-    authState.username.value = "";
-    router.push("/login");
-  }, 3000);
-}
-</script>
+</script>”
 
 <template>
   <nav class="navbar is-justify-content-center pt-2" role="navigation">
@@ -54,7 +49,11 @@ function logOutApi() {
         <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
-        <router-link to="/userProfile" class="navbar-item" v-if="isUserLoggedIn">
+        <router-link
+          to="/userProfile"
+          class="navbar-item"
+          v-if="isUserLoggedIn"
+        >
           <span>Profile</span>
         </router-link>
 
@@ -77,7 +76,7 @@ function logOutApi() {
           <div class="field is-grouped">
             <p class="control">
               <button v-if="isUserLoggedIn" class="button has-text-black">
-                <span>{{ authState.username }}</span>
+                <span>{{ user?.username }}</span>
               </button>
             </p>
             <p class="control">
