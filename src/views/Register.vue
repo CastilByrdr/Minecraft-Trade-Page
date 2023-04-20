@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import {
+  isEmailValid,
+  isPasswordValid,
+  isUsernameValid,
+  register,
+} from "@/service/AuthService";
 import { reactive } from "vue";
-import { authState } from "../state/user";
-import { register } from "@/service/AuthService";
+import { user } from "../state/user";
 
 const registerState = reactive({
   username: "mzhunio",
@@ -26,52 +31,18 @@ async function onRegisterClicked(
   }
 
   try {
-    authState.user.value = await register({ username, password, email, isAdmin: false, lastActive: "" });
+    user.value = await register({
+      username,
+      password,
+      email,
+      isAdmin: false,
+      lastActive: "",
+    });
   } catch (error) {
-    authState.user.value = null;
+    user.value = null;
     // TODO: ShowErrorMessage
   }
 }
-
-function isUsernameValid(username: string): boolean {
-  const hasMinimumLength = username.length >= 4;
-
-  if (!hasMinimumLength) {
-    console.error("Invalid username: Please enter at least 4 characters");
-  }
-
-  return hasMinimumLength;
-}
-
-function isPasswordValid(password: string, rePassword: string) {
-  const arePasswordAndReEnterPasswordEqual = password === rePassword;
-  if (!arePasswordAndReEnterPasswordEqual) {
-    console.error(
-      "Invalid Password: Password and re-enter password are not equal"
-    );
-  }
-
-  const hasMinimumLength =
-    arePasswordAndReEnterPasswordEqual && password.length >= 5;
-  if (!hasMinimumLength) {
-    console.error("Invalid Password: Please enter at least 5 characters");
-  }
-
-  return arePasswordAndReEnterPasswordEqual && hasMinimumLength;
-}
-
-function isEmailValid(email: string | null): boolean {
-  const emailRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const isEmailValid = !!email?.toLowerCase().match(emailRegex);
-
-  if (!isEmailValid) {
-    console.error("Invalid email");
-  }
-
-  return !!isEmailValid;
-}
-
 </script>
 
 <template>
@@ -182,6 +153,6 @@ function isEmailValid(email: string | null): boolean {
   font-family: "Minecraft";
 }
 .input {
-    font-family: "Minecraft";
+  font-family: "Minecraft";
 }
 </style>

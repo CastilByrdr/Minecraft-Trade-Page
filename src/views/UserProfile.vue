@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import { getUser } from "@/service/UserService";
-import { users } from "@/state/user";
+import { isPasswordValid } from "@/service/AuthService";
+import { updateUser } from "@/service/UserService";
+import { user } from "@/state/user";
+import { ref } from "vue";
 
-// const userId = "";
+const password = ref("");
+const rePassword = ref("");
 
-// async function getUserInfo() {
-//   const user = await getUser();
-
-//   users.value = user;
-// }
-
-// getUserInfo();
-
+async function onUpdatePasswordClicked() {
+  if (isPasswordValid(password.value, rePassword.value)) {
+    user.value = await updateUser(user.value!.id, { password: password.value });
+    password.value = "";
+    rePassword.value = "";
+    localStorage.setItem("user", JSON.stringify(user.value));
+  }
+}
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-if="user">
     <div class="card mt-5">
       <header class="card-header">
         <p class="card-header-title">My Account</p>
@@ -34,7 +37,7 @@ import { users } from "@/state/user";
               <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
-                  <input class="input" type="username" placeholder="{{ }}"/>
+                  <input class="input" type="username" :value="user.username" />
                 </div>
               </div>
             </div>
@@ -42,11 +45,25 @@ import { users } from "@/state/user";
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                  <input
-                    class="input"
-                    type="email"
-                    placeholder="email"
-                  />
+                  <input class="input" type="email" :value="user.email" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input class="input" type="password" v-model="password" />
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">Re-enter Password</label>
+                <div class="control">
+                  <input class="input" type="password" v-model="rePassword" />
                 </div>
               </div>
             </div>
@@ -54,7 +71,9 @@ import { users } from "@/state/user";
         </div>
       </div>
       <div class="buttons">
-        <button class="button is-primary ml-5">Update</button>
+        <button class="button is-primary ml-5" @click="onUpdatePasswordClicked">
+          Update Password
+        </button>
       </div>
     </div>
   </div>
@@ -66,6 +85,6 @@ import { users } from "@/state/user";
 }
 
 .input {
-    font-family: "Minecraft";
+  font-family: "Minecraft";
 }
 </style>

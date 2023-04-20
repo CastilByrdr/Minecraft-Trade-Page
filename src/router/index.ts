@@ -1,73 +1,74 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '@/views/Login.vue'
-import Register from '@/views/Register.vue'
-import ListFoods from '@/views/ListFoods.vue'
-import Users from '@/views/Users.vue'
-import ServerPage from '@/views/ServerPage.vue'
-import CreatePost from '@/components/CreatePost.vue'
-import UserProfile from '@/views/UserProfile.vue'
-import ItemCategories from '@/views/ItemCategories.vue'
-import TradeItems from '@/views/TradeItems.vue'
+import CreatePost from "@/components/CreatePost.vue";
+import ItemCategories from "@/views/ItemCategories.vue";
+import ListFoods from "@/views/ListFoods.vue";
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
+import TradeItems from "@/views/TradeItems.vue";
+import UserProfile from "@/views/UserProfile.vue";
+import Users from "@/views/Users.vue";
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import { authGuard } from "./RouterGuard";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: "/",
+      name: "home",
+      component: Home,
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: "/login",
+      name: "login",
+      component: Login,
     },
     {
       path: "/register",
       name: "register",
-      component: Register
+      component: Register,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: "/about",
+      name: "about",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/About.vue')
+      component: () => import("../views/About.vue"),
     },
     {
-      path: '/listFoods',
-      name: 'listFoods',
-      component : ListFoods
+      path: "/listFoods",
+      name: "listFoods",
+      component: ListFoods,
     },
     {
-      path:'/users',
+      path: "/users",
       name: "users",
-      component: Users
+      component: Users,
+      beforeEnter: authGuard,
     },
     {
-      path:'/userProfile',
+      path: "/userProfile",
       name: "userProfile",
-      component: UserProfile
+      component: UserProfile,
+      beforeEnter: authGuard,
     },
     {
-      path:'/createPost',
-      name: 'createPost',
-      component: CreatePost
-    }, 
-    {
-      path: '/itemCategories',
-      name: 'itemCategories',
-      component: ItemCategories
-    }, 
-    {
-      path: '/tradeItems',
-      name: 'tradeItems',
-      component: TradeItems
+      path: "/createPost",
+      name: "createPost",
+      component: CreatePost,
     },
-    
-  ]
-})
+    {
+      path: "/itemCategories",
+      name: "itemCategories",
+      component: ItemCategories,
+    },
+    {
+      path: "/tradeItems",
+      name: "tradeItems",
+      component: TradeItems,
+    },
+  ],
+});
 
-export default router
+export default router;
