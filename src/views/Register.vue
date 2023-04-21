@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {
+  AuthError,
   isEmailValid,
   isPasswordValid,
   isUsernameValid,
   register,
 } from "@/service/AuthService";
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import { user } from "../state/user";
 
 const registerState = reactive({
@@ -14,6 +15,8 @@ const registerState = reactive({
   rePassword: "12345",
   email: "a@a.com",
 });
+
+const isUsernameInvalid = computed(() => !isUsernameValid(registerState.username));
 
 async function onRegisterClicked(
   username: string,
@@ -60,6 +63,9 @@ async function onRegisterClicked(
               <div class="control has-icons-left">
                 <input
                   class="input"
+                  :class="{
+                    'is-danger': isUsernameInvalid,
+                  }"
                   type="text"
                   v-model="registerState.username"
                   placeholder="Username"
@@ -67,6 +73,12 @@ async function onRegisterClicked(
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
+                <div
+                  class="mt-1 has-text-danger is-size-7"
+                  v-if="isUsernameInvalid"
+                >
+                  {{ AuthError.InvalidUsernameMinLength }}
+                </div>
               </div>
             </div>
 

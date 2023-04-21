@@ -6,6 +6,10 @@ import { createUser } from "./UserService";
 
 const API_URL = "http://localhost:3000";
 
+export enum AuthError {
+  InvalidUsernameMinLength = "Invalid username: Please enter at least 4 characters",
+}
+
 export function register(createUserModel: CreateUserModel): Promise<User> {
   return createUser(createUserModel);
 }
@@ -28,7 +32,7 @@ export function isUsernameValid(username: string): boolean {
   const hasMinimumLength = username.length >= 4;
 
   if (!hasMinimumLength) {
-    console.error("Invalid username: Please enter at least 4 characters");
+    console.error(AuthError.InvalidUsernameMinLength);
   }
 
   return hasMinimumLength;
