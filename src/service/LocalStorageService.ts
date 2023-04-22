@@ -11,7 +11,11 @@ export const LocalStorage = {
     return user ? JSON.parse(user) : null;
   },
 
-  removeCurrentUser() {
+  setCurrentUser(user: User): void {
+    localStorage.setItem(LocalStorageKeys.currentUser, JSON.stringify(user));
+  },
+
+  removeCurrentUser(): void {
     localStorage.removeItem(LocalStorageKeys.currentUser);
   },
 };
