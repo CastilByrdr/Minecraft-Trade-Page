@@ -91,3 +91,9 @@ const router = createRouter({
   ],
 });
 export default router;
+
+export const Router = {
+  async goToHomePage() {
+    await router.push("/");
+  },
+};

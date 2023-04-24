@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {
+  AuthError,
+  getPasswordErrors,
+  getUsernameErrors,
   isEmailValid,
-  isPasswordValid,
-  isUsernameValid,
   register,
 } from "@/service/AuthService";
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import { user } from "../state/user";
 
 const registerState = reactive({
@@ -15,6 +16,13 @@ const registerState = reactive({
   email: "a@a.com",
 });
 
+const usernameErrors = computed(() =>
+  getUsernameErrors(registerState.username)
+);
+const passwordErrors = computed(() =>
+  getPasswordErrors(registerState.password, registerState.rePassword)
+);
+
 async function onRegisterClicked(
   username: string,
   password: string,
@@ -22,8 +30,8 @@ async function onRegisterClicked(
   email: string
 ): Promise<void> {
   const isFormValid =
-    isUsernameValid(username) &&
-    isPasswordValid(password, rePassword) &&
+    getUsernameErrors(username) &&
+    getPasswordErrors(password, rePassword) &&
     isEmailValid(email);
 
   if (!isFormValid) {
@@ -60,6 +68,9 @@ async function onRegisterClicked(
               <div class="control has-icons-left">
                 <input
                   class="input"
+                  :class="{
+                    'is-danger': usernameErrors,
+                  }"
                   type="text"
                   v-model="registerState.username"
                   placeholder="Username"
@@ -67,6 +78,12 @@ async function onRegisterClicked(
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
+                <div
+                  class="mt-1 has-text-danger is-size-7"
+                  v-if="usernameErrors?.InvalidUsernameMinLength"
+                >
+                  {{ AuthError.InvalidUsernameMinLength }}
+                </div>
               </div>
             </div>
 
@@ -97,6 +114,19 @@ async function onRegisterClicked(
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                 </span>
+
+                <div
+                  class="mt-1 has-text-danger is-size-7"
+                  v-if="passwordErrors?.InvalidPasswordAndRePasswordDoNotMatch"
+                >
+                  {{ AuthError.InvalidPasswordAndRePasswordDoNotMatch }}
+                </div>
+                <div
+                  class="mt-1 has-text-danger is-size-7"
+                  v-if="passwordErrors?.InvalidPasswordMinLength"
+                >
+                  {{ AuthError.InvalidPasswordMinLength }}
+                </div>
               </div>
             </div>
 
@@ -119,6 +149,10 @@ async function onRegisterClicked(
               <div class="control is-flex">
                 <button
                   class="button is-success is-light is-flex-grow-1"
+                  :class="{
+                    'is-danger': usernameErrors,
+                  }"
+                  :disabled?="usernameErrors"
                   @click="
                     onRegisterClicked(
                       registerState.username,
@@ -149,7 +183,7 @@ async function onRegisterClicked(
 
 <style scoped>
 .button {
-  box-shadow: 3px 3px #42a168;
+  /* box-shadow: 3px 3px #42a168; */
   font-family: "Minecraft";
 }
 .input {
