@@ -2,53 +2,73 @@ import type { LoginModel } from "@/model/AuthModel";
 import type { CreateUserModel, User } from "@/model/UserModel";
 import { user } from "@/state/user";
 import axios from "axios";
+import { LocalStorage } from "./LocalStorageService";
 import { createUser } from "./UserService";
 
 const API_URL = "http://localhost:3000";
 
+export enum AuthError {
+  InvalidUsernameMinLength = "Invalid username: Please enter at least 4 characters",
+  InvalidPasswordMinLength = "Invalid Password: Please enter at least 5 characters",
+  InvalidPasswordAndRePasswordDoNotMatch = "Invalid Password: Password and re-enter password are not equal",
+}
+
+export const AuthApi = {
+  async login(loginModel: LoginModel): Promise<User> {
+    const { data } = await axios.post<User>(API_URL + "/login", loginModel);
+    return data;
+  },
+
+  async logout(userId: number) {
+    const { data } = await axios.post<User>(`${API_URL}/logout/${userId}`);
+    return data;
+  },
+};
+
+export const AuthService = {
+  async login(username: string, password: string) {
+    user.value = await AuthApi.login({ username, password });
+    LocalStorage.setCurrentUser(user.value);
+  },
+
+  async logout(userId: number) {
+    await AuthApi.logout(userId);
+    user.value = null;
+    LocalStorage.removeCurrentUser();
+  },
+};
+
 export function register(createUserModel: CreateUserModel): Promise<User> {
   return createUser(createUserModel);
-}
-
-export async function login(loginModel: LoginModel): Promise<User> {
-  const { data } = await axios.post<User>(API_URL + "/login", loginModel);
-  return data;
-}
-
-export async function logout(userId: number) {
-  const { data } = await axios.post<User>(`${API_URL}/logout/${userId}`);
-  return data;
 }
 
 export function updateCurrentUser(currentUser: User) {
   user.value = currentUser;
 }
 
-export function isUsernameValid(username: string): boolean {
+export function getUsernameErrors(username: string) {
   const hasMinimumLength = username.length >= 4;
 
   if (!hasMinimumLength) {
-    console.error("Invalid username: Please enter at least 4 characters");
+    return { InvalidUsernameMinLength: true };
   }
 
-  return hasMinimumLength;
+  return null;
 }
 
-export function isPasswordValid(password: string, rePassword: string) {
+export function getPasswordErrors(password: string, rePassword: string) {
   const arePasswordAndReEnterPasswordEqual = password === rePassword;
   if (!arePasswordAndReEnterPasswordEqual) {
-    console.error(
-      "Invalid Password: Password and re-enter password are not equal"
-    );
+    return { InvalidPasswordAndRePasswordDoNotMatch: true };
   }
 
   const hasMinimumLength =
     arePasswordAndReEnterPasswordEqual && password.length >= 5;
   if (!hasMinimumLength) {
-    console.error("Invalid Password: Please enter at least 5 characters");
+    return { InvalidPasswordMinLength: true };
   }
 
-  return arePasswordAndReEnterPasswordEqual && hasMinimumLength;
+  return null;
 }
 
 export function isEmailValid(email: string | null): boolean {

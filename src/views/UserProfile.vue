@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { isPasswordValid } from "@/service/AuthService";
+import { getPasswordErrors } from "@/service/AuthService";
 import { updateUser } from "@/service/UserService";
 import { user } from "@/state/user";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const password = ref("");
 const rePassword = ref("");
 
+const passwordErrors = computed(() =>
+  getPasswordErrors(password.value, rePassword.value)
+);
+
 async function onUpdatePasswordClicked() {
-  if (isPasswordValid(password.value, rePassword.value)) {
-    user.value = await updateUser(user.value!.id, { password: password.value });
-    password.value = "";
-    rePassword.value = "";
-    localStorage.setItem("user", JSON.stringify(user.value));
-  }
+  user.value = await updateUser(user.value!.id, { password: password.value });
+  password.value = "";
+  rePassword.value = "";
+  localStorage.setItem("user", JSON.stringify(user.value));
 }
 </script>
 
@@ -71,7 +73,11 @@ async function onUpdatePasswordClicked() {
         </div>
       </div>
       <div class="buttons">
-        <button class="button is-primary ml-5" @click="onUpdatePasswordClicked">
+        <button
+          class="button is-primary ml-5"
+          :disabled="!!passwordErrors"
+          @click="onUpdatePasswordClicked"
+        >
           Update Password
         </button>
       </div>
