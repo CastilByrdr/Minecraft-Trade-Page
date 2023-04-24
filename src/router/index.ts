@@ -1,4 +1,3 @@
-import ServerPage from "@/views/ServerPage.vue";
 import CreatePost from "@/components/CreatePost.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
 import ListFoods from "@/views/ListFoods.vue";
@@ -7,7 +6,7 @@ import Register from "@/views/Register.vue";
 import TradeItems from "@/views/TradeItems.vue";
 import UserProfile from "@/views/UserProfile.vue";
 import Users from "@/views/Users.vue";
-import ServerPage from "@views/ServerPage.vue"
+import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import { authGuard } from "./RouterGuard";
@@ -50,7 +49,7 @@ const router = createRouter({
       beforeEnter: authGuard,
     },
     {
-      path:'/serverPage',
+      path: "/serverPage",
       name: "serverPage",
       component: ServerPage,
     },
@@ -61,19 +60,19 @@ const router = createRouter({
       beforeEnter: authGuard,
     },
     {
-      path:'/createPost',
-      name: 'createPost',
-      component: CreatePost
-    }, 
+      path: "/createPost",
+      name: "createPost",
+      component: CreatePost,
+    },
     {
-      path: '/itemCategories',
-      name: 'itemCategories',
-      component: ItemCategories
-    }, 
+      path: "/itemCategories",
+      name: "itemCategories",
+      component: ItemCategories,
+    },
     {
-      path: '/tradeItems',
-      name: 'tradeItems',
-      component: TradeItems
+      path: "/tradeItems",
+      name: "tradeItems",
+      component: TradeItems,
     },
     {
       path: "/createPost",
