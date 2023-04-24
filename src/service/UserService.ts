@@ -8,6 +8,12 @@ export async function getAllUsers(): Promise<User[]> {
   return data;
 }
 
+export async function getUser(id: number): Promise<User[]> {
+  const { data } = await axios.get<User[]>(`${API_URL}/user/${id}`);
+  return data;
+}
+
+
 export async function createUser(
   createUserModel: CreateUserModel
 ): Promise<User> {
