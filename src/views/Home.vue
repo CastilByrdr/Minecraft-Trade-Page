@@ -31,7 +31,7 @@
         users.
       </p>
 
-      <hr />
+      <hr/>
 
       <h3 class="title">How to get started:</h3>
       <p>

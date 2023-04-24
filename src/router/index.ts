@@ -6,6 +6,7 @@ import Register from "@/views/Register.vue";
 import TradeItems from "@/views/TradeItems.vue";
 import UserProfile from "@/views/UserProfile.vue";
 import Users from "@/views/Users.vue";
+import ServerPage from "@views/ServerPage.vue"
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import { authGuard } from "./RouterGuard";
@@ -50,7 +51,7 @@ const router = createRouter({
     {
       path:'/serverPage',
       name: "serverPage",
-      component: ServerPage
+      component: ServerPage,
     },
     {
       path: "/userProfile",
