@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import router from "@/router";
-import { authState } from "@/state/user";
-import { def } from "@vue/shared";
-import axios from "axios";
+import { isPasswordValid, isUsernameValid, login, updateCurrentUser } from "@/service/AuthService";
+import { user } from "@/state/user";
 
 let username = "mzhunio";
 let password = "12345";
 
-function login() {
+async function onLoginClicked() {
   if (!username) {
     throw new Error("Please provide username");
   }
@@ -16,25 +15,20 @@ function login() {
     throw new Error("Please provide password");
   }
 
-  localStorage.setItem("username", username);
-  localStorage.setItem("password", password);
-
-  loginApi(username);
-}
-
-function loginApi(username: string) {
-  console.log("Logging in...");
-
-  console.log("Logging successfully");
-  authState.username.value = username;
+  user.value = await login({ username, password });
+  localStorage.setItem("user", JSON.stringify(user.value));
   router.push("/");
-
-  // setTimeout(() => {
-  //   console.log("Logging successfully");
-  //   authState.username.value = username;
-  //   router.push('/');
-  // }, 3000);
 }
+
+// function errorMessage() {
+//   if (user.value?.username && user.value.password) {
+//     return true;
+//   }
+
+//   if (!isUsernameValid(user.value!.username)) {
+//     console.error("Username is already taken");
+//   } 
+// }
 
 </script>
 
@@ -82,7 +76,7 @@ function loginApi(username: string) {
               <div class="control is-flex">
                 <button
                   class="button is-success is-light is-flex-grow-1"
-                  @click="login"
+                  @click="onLoginClicked"
                   type="button"
                 >
                   Sign in
@@ -116,6 +110,6 @@ function loginApi(username: string) {
   font-family: "Minecraft";
 }
 .input {
-    font-family: "Minecraft";
+  font-family: "Minecraft";
 }
 </style>

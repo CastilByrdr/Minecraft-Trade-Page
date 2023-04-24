@@ -13,7 +13,6 @@ export async function getUser(id: number): Promise<User[]> {
   return data;
 }
 
-
 export async function createUser(
   createUserModel: CreateUserModel
 ): Promise<User> {
