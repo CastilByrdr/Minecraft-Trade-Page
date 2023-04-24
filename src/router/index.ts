@@ -1,3 +1,4 @@
+import ServerPage from "@/views/ServerPage.vue";
 import CreatePost from "@/components/CreatePost.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
 import ListFoods from "@/views/ListFoods.vue";
