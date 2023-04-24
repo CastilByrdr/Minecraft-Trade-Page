@@ -1,4 +1,4 @@
-import ServerPage from "@/views/ServerPage.vue";
+import About from "@/views/About.vue";
 import CreatePost from "@/components/CreatePost.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
 import ListFoods from "@/views/ListFoods.vue";
@@ -7,7 +7,7 @@ import Register from "@/views/Register.vue";
 import TradeItems from "@/views/TradeItems.vue";
 import UserProfile from "@/views/UserProfile.vue";
 import Users from "@/views/Users.vue";
-import ServerPage from "@views/ServerPage.vue"
+import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import { authGuard } from "./RouterGuard";
@@ -36,7 +36,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/About.vue"),
+      component: About,
     },
     {
       path: "/listFoods",
@@ -89,8 +89,8 @@ const router = createRouter({
       path: "/tradeItems",
       name: "tradeItems",
       component: TradeItems,
-    },
-  ],
+    }
+  ]
 });
 export default router;
 

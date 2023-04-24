@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { RouterLink, RouterView } from "vue-router";
+  import { isUserLoggedIn } from "@/state/user";
 </script>
 
 <template>
