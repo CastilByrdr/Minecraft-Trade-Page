@@ -23,7 +23,7 @@ async function onLogout() {
     <router-link to="./">
       <img
         id="title"
-        src="graphics/HeaderTitle.png"
+        src="/graphics/HeaderTitle.png"
         alt="Minecraft Marketplace: The online item-trading hub for Minecraft servers!"
         class="navbar-item center"
       />

@@ -9,7 +9,7 @@ getUsernameErrors,
 import { computed, ref } from "vue";
 
 const username = ref("mzhunio");
-const password = ref("12345");
+const password = ref("password");
 
 const usernameErrors = computed(() => getUsernameErrors(username.value));
 const passwordErrors = computed(() =>

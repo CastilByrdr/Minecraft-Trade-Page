@@ -1,10 +1,12 @@
-import About from "@/views/About.vue";
 import CreatePost from "@/components/CreatePost.vue";
+import About from "@/views/About.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
 import ListFoods from "@/views/ListFoods.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
-import TradeItems from "@/views/TradeItems.vue";
+import Trade from "@/views/Trade.vue";
+import TradeList from "@/views/TradeList.vue";
+import TradeMessage from "@/views/TradeMessage.vue";
 import UserProfile from "@/views/UserProfile.vue";
 import Users from "@/views/Users.vue";
 // import ServerPage from "@/views/ServerPage.vue";
@@ -72,11 +74,6 @@ const router = createRouter({
       component: ItemCategories,
     },
     {
-      path: "/tradeItems",
-      name: "tradeItems",
-      component: TradeItems,
-    },
-    {
       path: "/createPost",
       name: "createPost",
       component: CreatePost,
@@ -87,11 +84,23 @@ const router = createRouter({
       component: ItemCategories,
     },
     {
-      path: "/tradeItems",
-      name: "tradeItems",
-      component: TradeItems,
-    }
-  ]
+      path: "/trade",
+      name: "trade",
+      component: Trade,
+      children: [
+        {
+          path: "/trade/list",
+          name: "tradeList",
+          component: TradeList,
+        },
+        {
+          path: "/trade/message",
+          name: "tradeMessage",
+          component: TradeMessage,
+        },
+      ],
+    },
+  ],
 });
 export default router;
 
