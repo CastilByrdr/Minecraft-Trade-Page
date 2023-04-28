@@ -44,14 +44,21 @@ async function onLogout() {
 
     <div id="navbar" class="navbar-menu" :class="{ 'is-active': isMenuActive }">
       <div class="navbar-start">
-        <router-link to="/" class="navbar-item">
+        <router-link
+          to="/"
+          class="navbar-item">
           <span>Home</span>
+        </router-link>
+        <router-link
+          to="/serverPage"
+          class="navbar-item"
+          v-if="isUserLoggedIn">
+          <span>Trade</span>
         </router-link>
         <router-link
           to="/userProfile"
           class="navbar-item"
-          v-if="isUserLoggedIn"
-        >
+          v-if="isUserLoggedIn">
           <span>Profile</span>
         </router-link>
 
