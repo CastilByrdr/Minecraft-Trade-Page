@@ -15,7 +15,6 @@ export function closeModal(){
 export interface Item{
     itemName: string;
     itemCategory:string;
-    itemDescription: string;
     isAvailable: string;
 }
 
