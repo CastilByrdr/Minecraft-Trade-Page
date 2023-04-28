@@ -77,14 +77,9 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="item-description">Item Description</label>
-                        <input type="text" class="input" id="item-description">
-                    </div>
-                    <div class="field">
                         <label class="label" for="is-available">Is the item available?</label>
                         <input type="text" class="input" id="is-available">
-                    </div>
-                    
+                    </div>   
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-success is-primary" @click.prevent="addItem()">Save</button>

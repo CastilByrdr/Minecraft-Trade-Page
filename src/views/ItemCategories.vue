@@ -46,16 +46,24 @@ const categories = ref<Category[]>([
     imagePath: "/src/assets/categories/potions.png",
   },
   {
-    name: "Mog Eggs",
-    imagePath: "/src/assets/categories/mog-eggs.png",
-  },
-  {
     name: "Records",
     imagePath: "/src/assets/categories/records.png",
   },
   {
     name: "Dyes",
     imagePath: "/src/assets/categories/dyes.png",
+  },
+  {
+    name: "Blocks",
+    imagePath: "/src/assets/categories/blocks.png",
+  },
+  {
+    name: "Smithing Templates",
+    imagePath: "/src/assets/categories/smithing_templates.png",
+  },
+  {
+    name: "Pottery",
+    imagePath: "/src/assets/categories/pottery.png",
   },
 ]);
 </script>
