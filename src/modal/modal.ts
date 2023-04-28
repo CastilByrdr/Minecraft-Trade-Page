@@ -23,7 +23,6 @@ export const item = ref<Item>(
     {
         itemName:"Raw Meat",
         itemCategory:"Food",
-        itemDescription:"askdhfakjsdhfa",
         isAvailable:"yes",
     }
 );
@@ -32,13 +31,11 @@ const foodItems = [
     {
         itemName:"Raw Chicken",
         itemCategory:"Food",
-        itemDescription:"askdhfakjsdhfa",
         isAvailable:"No",
     },
     {
         itemName:"Raw Rabbit",
         itemCategory:"Food",
-        itemDescription:"qqqqqqqqqq",
         isAvailable:"yes",
     }
 ]
