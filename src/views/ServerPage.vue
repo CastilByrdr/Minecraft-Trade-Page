@@ -1,13 +1,26 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from "vue-router";
+  import { Router } from "@/router";
+  import { server } from "../state/server";
+  import { user } from "../state/user"
+  //import { product } from "../state/product"
 </script>
 
 <template>
   <div class="container">
     <h3 class="title">ServerPage</h3>
-    <h1 class="title m-4">Welcome to Server Name's marketplace!</h1>
+    <h1 class="title m-4">Welcome to <span>{{ server?.name }}</span> marketplace!</h1>
 
-<!--    <div class="card is-justify-content-center">
+    <div class="card server-list">
+      <header class="card-header">
+        <h3 class="title has-text-centered m-4">Server List</h3>
+      </header>
+      <div class="content">
+        <router-link to="/">Server Page</router-link>
+        <button class="button m-4 is-success">Add Server</button>
+      </div>
+    </div>
+
+<!--  <div class="card is-justify-content-center">
     <header class="card-header">
       <p class="card-header-title">Open Listings</p>
     </header>
@@ -26,15 +39,15 @@
         <p>{{ product.postedBy }}</p>
         <time datetime="2016-1-1"> {{ product.dateTime }}</time>
         <p>
-          <span>Qty </span>
+          <span>Qty: </span>
           <i class="quantity">
             {{ product.quantity }}
           </i>
         </p>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Edit Listing</a>
-          <a href="#" class="card-footer-item">Send Message</a>
-          <br />
+          <a v-if="user?.username == product.postedBy" href="#" class="card-footer-item">Edit Listing</a>
+          <a href="#" class="card-footer-item">Message Trader</a>
+          <br/>
         </footer>
       </div>
     </div>

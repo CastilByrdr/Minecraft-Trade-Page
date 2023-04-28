@@ -1,25 +1,18 @@
 <script setup lang="ts">
   import { RouterLink, RouterView } from "vue-router";
-  import { isUserLoggedIn } from "@/state/user";
+  import { isUserLoggedIn, user } from "@/state/user";
 </script>
 
 <template>
   <div class="container">
-    <div v-if="isUserLoggedIn">
-    <h1 class="title m-4">Welcome, user!</h1>
-  
-    <div class="card server-list">
-      <header class="card-header">
-        <h3 class="title has-text-centered m-4">Server List</h3>
-      </header>
-      <div class="content">
-        <router-link to="/">Server Page</router-link>
-        <button class="button m-4 is-success">Add Server</button>
-      </div>
+    <div class ="welcome">
+      <h1 v-if="isUserLoggedIn" class="title m-4">Welcome, 
+        <span>{{ user?.username }}</span>
+      </h1>
+      <h1 v-else class="title m-4">Welcome, user! Please register/login!</h1>
     </div>
-  </div>
 
-    <hr />
+    <hr/>
 
     <div class="about-us m-4">
       <h3 class="title">About Minecraft Marketplace:</h3>
