@@ -161,7 +161,7 @@ async function onRegisterClicked(
                     'is-danger':
                       usernameErrors || emailErrors || passwordErrors,
                   }"
-                  :disabled?="usernameErrors || emailErrors || passwordErrors"
+                  :disabled="!!usernameErrors || !!emailErrors || !!passwordErrors"
                   @click="
                     onRegisterClicked(
                       registerState.username,
