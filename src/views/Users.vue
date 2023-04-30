@@ -2,7 +2,6 @@
 import { getAllUsers } from "@/service/UserService";
 import { users } from "../state/user";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { parseISO } from "date-fns";
 
 async function getUsers() {
   const allUsers = await getAllUsers();
@@ -42,9 +41,7 @@ getUsers();
                 <abbr title="isAdmin">{{ user.isAdmin }}</abbr>
               </td>
               <td>
-                <abbr title="lastActive">{{
-                  formatDistanceToNow(parseISO(user.lastActive))
-                }}</abbr>
+                <abbr title="lastActive">{{ formatDistanceToNow(new Date(user.lastActive), { includeSeconds: true, addSuffix: true }) }}</abbr>
               </td>
             </tr>
           </tbody>
