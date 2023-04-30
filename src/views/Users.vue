@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { getAllUsers } from "@/service/UserService";
 import { users } from "../state/user";
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { parseISO } from "date-fns";
 
 async function getUsers() {
   const allUsers = await getAllUsers();
@@ -10,7 +11,6 @@ async function getUsers() {
 }
 
 getUsers();
-
 </script>
 
 <template>
@@ -41,8 +41,10 @@ getUsers();
               <td>
                 <abbr title="isAdmin">{{ user.isAdmin }}</abbr>
               </td>
-               <td>
-                <abbr title="lastActive">{{ formatDistanceToNow(new Date(user.lastActive), { includeSeconds: true, addSuffix: true }) }}</abbr>
+              <td>
+                <abbr title="lastActive">{{
+                  formatDistanceToNow(parseISO(user.lastActive))
+                }}</abbr>
               </td>
             </tr>
           </tbody>

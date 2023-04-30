@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import router from "@/router";
 import {
   AuthError,
+  getEmailErrors,
   getPasswordErrors,
   getUsernameErrors,
-  isEmailValid,
   register,
 } from "@/service/AuthService";
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import { user } from "../state/user";
 
 const registerState = reactive({
@@ -19,25 +20,20 @@ const registerState = reactive({
 const usernameErrors = computed(() =>
   getUsernameErrors(registerState.username)
 );
+
 const passwordErrors = computed(() =>
   getPasswordErrors(registerState.password, registerState.rePassword)
 );
 
+const emailErrors = computed(() => getEmailErrors(registerState.email));
+
+const apiError = ref("");
+
 async function onRegisterClicked(
   username: string,
   password: string,
-  rePassword: string,
   email: string
 ): Promise<void> {
-  const isFormValid =
-    getUsernameErrors(username) &&
-    getPasswordErrors(password, rePassword) &&
-    isEmailValid(email);
-
-  if (!isFormValid) {
-    return;
-  }
-
   try {
     user.value = await register({
       username,
@@ -46,9 +42,11 @@ async function onRegisterClicked(
       isAdmin: false,
       lastActive: "",
     });
-  } catch (error) {
+    router.push("/");
+  } catch (error: any) {
     user.value = null;
-    // TODO: ShowErrorMessage
+    apiError.value =
+      error.response.data.message ?? "Sorry, we could not register the user";
   }
 }
 </script>
@@ -135,6 +133,9 @@ async function onRegisterClicked(
               <div class="control has-icons-left">
                 <input
                   class="input"
+                  :class="{
+                    'is-danger': emailErrors,
+                  }"
                   type="email"
                   v-model="registerState.email"
                   placeholder="Email"
@@ -142,28 +143,37 @@ async function onRegisterClicked(
                 <span class="icon is-small is-left">
                   <i class="fa-solid fa-envelope"></i>
                 </span>
+                <div
+                  class="mt-1 has-text-danger is-size-7"
+                  v-if="emailErrors?.InvalidEmail"
+                >
+                  {{ AuthError.InvalidEmail }}
+                </div>
               </div>
             </div>
 
             <div class="field">
-              <div class="control is-flex">
+              <div class="control">
                 <button
-                  class="button is-success is-light is-flex-grow-1"
+                  style="width: 100%"
+                  class="button is-success is-light"
                   :class="{
-                    'is-danger': usernameErrors,
+                    'is-danger':
+                      usernameErrors || emailErrors || passwordErrors,
                   }"
-                  :disabled?="usernameErrors"
+                  :disabled?="usernameErrors || emailErrors || passwordErrors"
                   @click="
                     onRegisterClicked(
                       registerState.username,
                       registerState.password,
-                      registerState.rePassword,
                       registerState.email
                     )
                   "
                 >
                   Register
                 </button>
+                <br />
+                <p v-if="apiError" class="help is-danger">{{ apiError }}</p>
               </div>
             </div>
 
