@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getAllUsers } from "@/service/UserService";
+import { deleteUser, getAllUsers, reloadUsers } from "@/service/UserService";
 import { users } from "../state/user";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
@@ -10,6 +10,12 @@ async function getUsers() {
 }
 
 getUsers();
+
+async function onDeleteUserClicked(userId: number) {
+  await deleteUser(userId);
+  await reloadUsers();
+}
+
 </script>
 
 <template>
@@ -24,6 +30,7 @@ getUsers();
               <th>Email</th>
               <th>Is Admin</th>
               <th>Last Active</th>
+              <th></th>
             </tr>
           </thead>
           <tbody v-for="user in users">
@@ -41,8 +48,20 @@ getUsers();
                 <abbr title="isAdmin">{{ user.isAdmin }}</abbr>
               </td>
               <td>
-                <abbr title="lastActive">{{ formatDistanceToNow(new Date(user.lastActive), { includeSeconds: true, addSuffix: true }) }}</abbr>
+                <abbr title="lastActive">{{
+                  formatDistanceToNow(new Date(user.lastActive), {
+                    includeSeconds: true,
+                    addSuffix: true,
+                  })
+                }}</abbr>
               </td>
+              <th>
+                <abbr title="Played">
+                  <button class="button" @click="onDeleteUserClicked(user.id)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </abbr>
+              </th>
             </tr>
           </tbody>
         </table>
