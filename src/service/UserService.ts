@@ -1,4 +1,5 @@
 import type { CreateUserModel, UpdateUserModel, User } from "@/model/UserModel";
+import { users } from "@/state/user";
 import axios from "axios";
 
 const API_URL = "http://localhost:3000";
@@ -11,6 +12,11 @@ export async function getAllUsers(): Promise<User[]> {
 export async function getUser(id: number): Promise<User[]> {
   const { data } = await axios.get<User[]>(`${API_URL}/user/${id}`);
   return data;
+}
+
+export async function reloadUsers() {
+  const { data } = await axios.get<User[]>(API_URL + "/user");
+  users.value = data;
 }
 
 export async function createUser(
