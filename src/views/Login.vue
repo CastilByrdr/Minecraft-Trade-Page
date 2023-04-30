@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Router } from "@/router";
 import {
-AuthError,
-AuthService,
-getPasswordErrors,
-getUsernameErrors,
+  AuthError,
+  AuthService,
+  getPasswordErrors,
+  getUsernameErrors,
 } from "@/service/AuthService";
 import { computed, ref } from "vue";
 
@@ -134,7 +134,7 @@ async function onLoginClicked() {
 }
 
 .button {
-  box-shadow: 3px 3px #42a168;
+  /* box-shadow: 3px 3px #42a168; */
   font-family: "Minecraft";
 }
 .input {

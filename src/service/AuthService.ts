@@ -11,6 +11,7 @@ export enum AuthError {
   InvalidUsernameMinLength = "Invalid username: Please enter at least 4 characters",
   InvalidPasswordMinLength = "Invalid Password: Please enter at least 5 characters",
   InvalidPasswordAndRePasswordDoNotMatch = "Invalid Password: Password and re-enter password are not equal",
+  InvalidEmail = "Invalid Email",
 }
 
 export const AuthApi = {
@@ -71,14 +72,14 @@ export function getPasswordErrors(password: string, rePassword: string) {
   return null;
 }
 
-export function isEmailValid(email: string | null): boolean {
+export function getEmailErrors(email: string | null) {
   const emailRegex =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const isEmailValid = !!email?.toLowerCase().match(emailRegex);
 
   if (!isEmailValid) {
-    console.error("Invalid email");
+    return { InvalidEmail : true};
   }
 
-  return !!isEmailValid;
+  return null;
 }
