@@ -62,11 +62,10 @@ async function onLogout() {
           <span>Profile</span>
         </router-link>
 
-        <div class="navbar-item has-dropdown is-hoverable" v-if="isUserLoggedIn">
-          <a class="navbar-link"> Search </a>
+        <div class="navbar-item has-dropdown is-hoverable" v-if="isUserLoggedIn && !!user!.isAdmin">
+          <a class="navbar-link"> Admin </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item"> Items </a>
             <router-link to="/users" class="navbar-item" v-if="isUserLoggedIn && !!user!.isAdmin">
               <span>Users</span>
             </router-link>
