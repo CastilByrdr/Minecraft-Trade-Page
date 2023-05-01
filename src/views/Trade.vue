@@ -33,6 +33,8 @@ const trades = [
 
         <div class="tabs is-left">
           <ul>
+            <RouterLink class="is-active" to="/trade/createPost"
+            >Create Post</RouterLink>
             <RouterLink class="is-active" to="/trade/list"
               >List of Trades</RouterLink
             >
