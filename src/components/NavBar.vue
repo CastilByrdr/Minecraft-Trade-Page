@@ -62,7 +62,7 @@ async function onLogout() {
           <span>Profile</span>
         </router-link>
 
-        <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-item has-dropdown is-hoverable" v-if="isUserLoggedIn">
           <a class="navbar-link"> Search </a>
 
           <div class="navbar-dropdown">
