@@ -26,7 +26,7 @@ const trades = [
 <template>
   <div class="columns mt-5">
     <div class="column" v-for="trade in trades">
-      <div class="card">
+      <div class="card has-background-primary-light">
         <div class="card-content">
           <div class="media">
             <div class="media-left">

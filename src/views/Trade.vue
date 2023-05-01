@@ -9,7 +9,7 @@ const trades = [
 
 <template>
   <div class="container mt-5">
-    <div class="card">
+    <div class="card has-background-primary-light">
       <div class="card-content">
         <div class="media">
           <div class="media-left">
