@@ -41,7 +41,10 @@ const trades = [
             <RouterLink to="/trade/message"
               >Messages</RouterLink
             >
-            <li><a>Search</a></li>
+            <RouterLink class="is-active" to="/trade/settings">
+              Settings
+            </RouterLink>
+            <li><a>Server</a></li>
           </ul>
         </div>
       </div>

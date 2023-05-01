@@ -7,8 +7,8 @@ import Register from "@/views/Register.vue";
 import Trade from "@/views/Trade.vue";
 import TradeList from "@/views/TradeList.vue";
 import TradeMessage from "@/views/TradeMessage.vue";
-import UserProfile from "@/views/UserProfile.vue";
 import Users from "@/views/Users.vue";
+import Settings from "@/components/Settings.vue";
 // import ServerPage from "@/views/ServerPage.vue";
 import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
@@ -57,12 +57,12 @@ const router = createRouter({
       name: "serverPage",
       component: ServerPage,
     },
-    {
-      path: "/userProfile",
-      name: "userProfile",
-      component: UserProfile,
-      beforeEnter: authGuard,
-    },
+    // {
+    //   path: "/userProfile",
+    //   name: "userProfile",
+    //   component: UserProfile,
+    //   beforeEnter: authGuard,
+    // },
     {
       path: "/createPost",
       name: "createPost",
@@ -102,6 +102,12 @@ const router = createRouter({
           path: "/trade/message",
           name: "tradeMessage",
           component: TradeMessage,
+        },
+        {
+          path:"/trade/settings",
+          name:"settings",
+          component: Settings,
+          beforeEnter: authGuard,
         },
       ],
     },
