@@ -73,11 +73,11 @@ const router = createRouter({
       name: "itemCategories",
       component: ItemCategories,
     },
-    {
-      path: "/createPost",
-      name: "createPost",
-      component: CreatePost,
-    },
+    // {
+    //   path: "/createPost",
+    //   name: "createPost",
+    //   component: CreatePost,
+    // },
     {
       path: "/itemCategories",
       name: "itemCategories",
@@ -88,6 +88,11 @@ const router = createRouter({
       name: "trade",
       component: Trade,
       children: [
+        {
+          path:"/trade/createPost",
+          name:"createPost",
+          component: CreatePost,
+        },
         {
           path: "/trade/list",
           name: "tradeList",
