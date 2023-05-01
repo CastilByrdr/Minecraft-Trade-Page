@@ -4,7 +4,7 @@ import ItemCategories from "@/views/ItemCategories.vue";
 import ListFoods from "@/views/ListFoods.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
-import Trade from "@/views/Trade.vue";
+import Profile from "@/views/Profile.vue";
 import TradeList from "@/views/TradeList.vue";
 import TradeMessage from "@/views/TradeMessage.vue";
 import Users from "@/views/Users.vue";
@@ -84,27 +84,27 @@ const router = createRouter({
       component: ItemCategories,
     },
     {
-      path: "/trade",
-      name: "trade",
-      component: Trade,
+      path: "/profile",
+      name: "profile",
+      component: Profile,
       children: [
         {
-          path:"/trade/createPost",
+          path:"/profile/createPost",
           name:"createPost",
           component: CreatePost,
         },
         {
-          path: "/trade/list",
+          path: "/profile/list",
           name: "tradeList",
           component: TradeList,
         },
         {
-          path: "/trade/message",
+          path: "/profile/message",
           name: "tradeMessage",
           component: TradeMessage,
         },
         {
-          path:"/trade/settings",
+          path:"/profile/settings",
           name:"settings",
           component: Settings,
           beforeEnter: authGuard,
