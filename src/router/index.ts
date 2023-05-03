@@ -1,12 +1,14 @@
-import About from "@/views/About.vue";
 import CreatePost from "@/components/CreatePost.vue";
+import About from "@/views/About.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
 import ListFoods from "@/views/ListFoods.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
-import TradeItems from "@/views/TradeItems.vue";
-import UserProfile from "@/views/UserProfile.vue";
+import Profile from "@/views/Profile.vue";
+import TradeList from "@/views/TradeList.vue";
+import TradeMessage from "@/views/TradeMessage.vue";
 import Users from "@/views/Users.vue";
+import Settings from "@/components/Settings.vue";
 // import ServerPage from "@/views/ServerPage.vue";
 import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
@@ -55,27 +57,12 @@ const router = createRouter({
       name: "serverPage",
       component: ServerPage,
     },
-    {
-      path: "/userProfile",
-      name: "userProfile",
-      component: UserProfile,
-      beforeEnter: authGuard,
-    },
-    {
-      path: "/createPost",
-      name: "createPost",
-      component: CreatePost,
-    },
-    {
-      path: "/itemCategories",
-      name: "itemCategories",
-      component: ItemCategories,
-    },
-    {
-      path: "/tradeItems",
-      name: "tradeItems",
-      component: TradeItems,
-    },
+    // {
+    //   path: "/userProfile",
+    //   name: "userProfile",
+    //   component: UserProfile,
+    //   beforeEnter: authGuard,
+    // },
     {
       path: "/createPost",
       name: "createPost",
@@ -86,12 +73,45 @@ const router = createRouter({
       name: "itemCategories",
       component: ItemCategories,
     },
+    // {
+    //   path: "/createPost",
+    //   name: "createPost",
+    //   component: CreatePost,
+    // },
     {
-      path: "/tradeItems",
-      name: "tradeItems",
-      component: TradeItems,
-    }
-  ]
+      path: "/itemCategories",
+      name: "itemCategories",
+      component: ItemCategories,
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Profile,
+      children: [
+        {
+          path:"/profile/createPost",
+          name:"createPost",
+          component: CreatePost,
+        },
+        {
+          path: "/profile/list",
+          name: "tradeList",
+          component: TradeList,
+        },
+        {
+          path: "/profile/message",
+          name: "tradeMessage",
+          component: TradeMessage,
+        },
+        {
+          path:"/profile/settings",
+          name:"settings",
+          component: Settings,
+          beforeEnter: authGuard,
+        },
+      ],
+    },
+  ],
 });
 export default router;
 

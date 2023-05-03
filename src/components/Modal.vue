@@ -1,11 +1,12 @@
 <script setup lang="ts">
  
  import { closeModal, mustShowModal, items, item } from "@/modal/modal";
+import router from "@/router";
 
  function addItem(){
     items.value.push({...item.value});
     closeModal();
-
+    router.push({ path: "/trade/list"})
  }
 
 </script>
