@@ -21,7 +21,7 @@
     </div>
 
     <div class="content">
-      Hi my name is Mr. Cat, and I would like to trade minecraft items. Please take a loot at my list 
+      Hi my name is Mr. Cat, and I would like to trade minecraft items. Please take a look at my list. 
     </div>
     
         <div class="tabs is-left">
