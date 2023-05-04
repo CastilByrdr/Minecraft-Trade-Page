@@ -29,7 +29,7 @@
       <hr/>
 
     <div class="m-4">
-      <h3 class="title">Meet the Development Team!</h3>
+      <h3 class="title">Meet the Development Team:</h3>
       <div class="cards p-4 has-text-centered">
         <img class="is-rounded" src="/graphics/user.png" alt="profile image">
         <h1 class="title">Joseph Ertman</h1>
@@ -68,7 +68,8 @@
         users that are also connected to that Minecraft Server and post your
         own!
       </p>
-    </div> 
+    </div>
+
   </div>
 </template>
 
