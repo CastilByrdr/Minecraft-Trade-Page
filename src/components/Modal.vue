@@ -6,7 +6,7 @@ import router from "@/router";
  function addItem(){
     items.value.push({...item.value});
     closeModal();
-    router.push({ path: "/trade/list"})
+    router.push({ path: "/profile/list"})
  }
 
 </script>
