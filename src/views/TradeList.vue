@@ -1,26 +1,21 @@
 <script setup lang="ts">
-import { format } from 'date-fns';
+import type { Trade } from "@/model/Trade";
+import { deleteTrade, getTrades } from "@/service/TradeService";
+import { format } from "date-fns";
+import { ref } from "vue";
 
-const trades = [
-  {
-    name: "Mr. Cat",
-    username: "@mr.kitty",
-    description: "Item Description",
-    date: new Date().toISOString(),
-  },
-  {
-    name: "Mr. Cat",
-    username: "@mr.kitty",
-    description: "Item Description",
-    date: new Date().toISOString(),
-  },
-  {
-    name: "Mr. Cat",
-    username: "@mr.kitty",
-    description: "Item Description",
-    date: new Date().toISOString(),
-  },
-];
+const trades = ref<Trade[]>([]);
+
+reloadTrades();
+
+async function reloadTrades() {
+  trades.value = await getTrades();
+}
+
+async function onCloseTradeClicked(tradeId: number) {
+  await deleteTrade(tradeId);
+  await reloadTrades();
+}
 </script>
 
 <template>
@@ -31,21 +26,29 @@ const trades = [
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <img
-                  src="https://bulma.io/images/placeholders/96x96.png"
-                  alt="Placeholder image"
-                />
+                <img :src="trade.categoryItem.image" alt="Placeholder image" />
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">{{ trade.name }}</p>
-              <p class="subtitle is-6">{{ trade.username }}</p>
+              <p class="title">@{{ trade.user.username }}</p>
+              <p class="subtitle">
+                <p>{{ trade.categoryItem.category }}</p>
+                <p>{{ trade.categoryItem.name }}</p>
+              </p>
             </div>
           </div>
-
-          <div class="content">{{ trade.description }}</div>
-          <time datetime="2023-1-1">{{ format(new Date(trade.date), 'MM/dd/yyyy hh:ss aa') }}</time>
+          <time datetime="2023-1-1">{{
+            format(new Date(trade.createdDate), "MM/dd/yyyy hh:ss aa")
+          }}</time>
         </div>
+        <footer class="card-footer">
+          <a
+            href="#"
+            @click="onCloseTradeClicked(trade.id)"
+            class="card-footer-item"
+            >Close Trade</a
+          >
+        </footer>
       </div>
     </div>
   </div>
