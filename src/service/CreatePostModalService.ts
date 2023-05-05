@@ -1,4 +1,7 @@
+import { API_URL } from "@/envrironment/environment";
 import type { CategoryItem } from "@/model/CategoryItemModel";
+import type { CreateTradeModel, Trade } from "@/model/Trade";
+import axios from "axios";
 import { ref } from "vue";
 import { getItemsByCategory } from "./CategoryItemService";
 

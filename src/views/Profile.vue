@@ -1,10 +1,6 @@
 <script setup lang="ts">
-const trades = [
-  { tradeName: "A", something: "sdfas" },
-  { tradeName: "B", something: "sdfas" },
-  { tradeName: "C", something: "sdfas" },
-  { tradeName: "D", something: "sdfas" },
-];
+import { user } from '@/state/user';
+
 </script>
 
 <template>
@@ -21,8 +17,7 @@ const trades = [
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4">Mr Cat</p>
-            <p class="subtitle is-6">@kitty</p>
+            <p class="title is-4">@{{ user?.username }}</p>
           </div>
         </div>
 
@@ -34,7 +29,7 @@ const trades = [
         <div class="tabs is-left">
           <ul>
             <RouterLink class="is-active" to="/profile/createPost"
-            >Create Post</RouterLink>
+            >Create Trade</RouterLink>
             <RouterLink class="is-active" to="/profile/list"
               >List of Trades</RouterLink
             >
