@@ -48,6 +48,11 @@ async function onCloseTradeClicked(tradeId: number) {
             class="card-footer-item"
             >Close Trade</a
           >
+          <a
+            href="#"
+            class="card-footer-item"
+            >Chat</a
+          >
         </footer>
       </div>
     </div>
