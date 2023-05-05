@@ -1,12 +1,27 @@
 <script setup lang="ts">
+import type { CategoryItem } from "@/model/CategoryItemModel";
+import type { CreateTradeModel } from "@/model/Trade";
 import router from "@/router";
 import {
-  categoryItems,
-  closeModal,
-  mustShowModal,
+categoryItems,
+closeModal,
+mustShowModal,
 } from "@/service/CreatePostModalService";
+import { createTrade } from "@/service/TradeService";
+import { user } from "@/state/user";
+import { ref } from "vue";
 
-function onCreatePostClicked() {
+const description = ref("");
+const currentCategoryItem = ref<CategoryItem | null>(null);
+
+async function onCreatePostClicked() {
+  const createTradeModel: CreateTradeModel = {
+    userId: user.value!.id,
+    categoryItemId: currentCategoryItem.value!.id,
+    description: description.value,
+  };
+
+  await createTrade(createTradeModel);
   closeModal();
   router.push({ path: "/profile/list" });
 }
@@ -17,28 +32,35 @@ function onCreatePostClicked() {
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Create Post</p>
+        <p class="modal-card-title">Create Trade</p>
         <button class="delete" aria-label="close" @click="closeModal"></button>
       </header>
       <section class="modal-card-body">
-        <div class="field mt-5">
-          <label class="food m-4" for="item-selected"
-            >List of all food Items</label
-          >
-          <div class="select is-full-width">
-            <select class="form-control" id="type">
-              <option
-                v-for="categoryItem of categoryItems"
-                :value="categoryItem.id"
-              >
-                {{ categoryItem.name }}
-              </option>
-            </select>
+        <div class="field">
+          <label class="label">Category Item</label>
+          <div class="control">
+            <div class="select">
+              <select v-model="currentCategoryItem">
+                <option
+                  v-for="categoryItem of categoryItems"
+                  :value="categoryItem"
+                >
+                  {{ categoryItem.name }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
+
         <div class="field">
-          <label class="label" for="is-available">Is the item available?</label>
-          <input type="text" class="input" id="is-available" />
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea
+              v-model="description"
+              class="textarea"
+              placeholder="Textarea"
+            ></textarea>
+          </div>
         </div>
       </section>
       <footer class="modal-card-foot">

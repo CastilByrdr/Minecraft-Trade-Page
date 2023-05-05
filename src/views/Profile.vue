@@ -20,8 +20,7 @@ const trades = [
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4">{{ user?.username }}</p>
-            <p class="subtitle is-6">@{{ user?.username }}</p>
+            <p class="title is-4">@{{ user?.username }}</p>
           </div>
         </div>
 
@@ -33,7 +32,7 @@ const trades = [
         <div class="tabs is-left">
           <ul>
             <RouterLink class="is-active" to="/profile/createPost"
-            >Create Post</RouterLink>
+            >Create Trade</RouterLink>
             <RouterLink class="is-active" to="/profile/list"
               >List of Trades</RouterLink
             >
