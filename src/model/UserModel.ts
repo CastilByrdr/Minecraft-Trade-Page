@@ -4,6 +4,7 @@ export interface CreateUserModel {
   password: string;
   isAdmin: boolean;
   lastActive: string;
+  imagePath: string;
 }
 
 export interface User {
@@ -13,6 +14,7 @@ export interface User {
   password: string;
   isAdmin: boolean;
   lastActive: string;
+  imagePath: string;
 }
 
 export interface UpdateUserModel {

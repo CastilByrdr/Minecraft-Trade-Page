@@ -1,9 +1,8 @@
 <script setup lang="ts">
+import router from "@/router";
 import { AuthService } from "@/service/AuthService";
 import { ref } from "vue";
 import { isUserLoggedIn, user } from "../state/user";
-import router from "@/router";
-import { LocalStorage } from "@/service/LocalStorageService";
 
 const isMenuActive = ref(false);
 
@@ -16,7 +15,8 @@ async function onLogout() {
   AuthService.logout(user.value!.id);
   router.push("/");
 }
-</script>”
+</script>
+”
 
 <template>
   <nav class="navbar is-justify-content-center pt-2" role="navigation">
@@ -44,23 +44,25 @@ async function onLogout() {
 
     <div id="navbar" class="navbar-menu" :class="{ 'is-active': isMenuActive }">
       <div class="navbar-start">
-        <router-link
-          to="/"
-          class="navbar-item">
+        <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
-        <router-link
-          to="/profile"
-          class="navbar-item"
-          v-if="isUserLoggedIn">
+        <router-link to="/profile" class="navbar-item" v-if="isUserLoggedIn">
           <span>Profile</span>
         </router-link>
 
-        <div class="navbar-item has-dropdown is-hoverable" v-if="isUserLoggedIn && !!user!.isAdmin">
+        <div
+          class="navbar-item has-dropdown is-hoverable"
+          v-if="isUserLoggedIn && !!user!.isAdmin"
+        >
           <a class="navbar-link"> Admin </a>
 
           <div class="navbar-dropdown">
-            <router-link to="/users" class="navbar-item" v-if="isUserLoggedIn && !!user!.isAdmin">
+            <router-link
+              to="/users"
+              class="navbar-item"
+              v-if="isUserLoggedIn && !!user!.isAdmin"
+            >
               <span>Users</span>
             </router-link>
             <hr class="navbar-divider" />
@@ -71,10 +73,11 @@ async function onLogout() {
 
       <div class="navbar-end">
         <div class="navbar-item">
+          
           <div class="field is-grouped">
             <p class="control">
               <button v-if="isUserLoggedIn" class="button has-text-black">
-                <span>{{ user?.username }}</span>
+                <span> {{ user?.username }}</span>
               </button>
             </p>
             <p class="control">

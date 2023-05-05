@@ -15,7 +15,6 @@ async function onDeleteUserClicked(userId: number) {
   await deleteUser(userId);
   await reloadUsers();
 }
-
 </script>
 
 <template>
@@ -25,6 +24,7 @@ async function onDeleteUserClicked(userId: number) {
         <table class="table is-bordered is-striped is-narrow is-hoverable">
           <thead>
             <tr>
+              <th>Image</th>
               <th>User ID</th>
               <th>Username</th>
               <th>Email</th>
@@ -35,6 +35,14 @@ async function onDeleteUserClicked(userId: number) {
           </thead>
           <tbody v-for="user in users">
             <tr>
+              <td>
+                <figure>
+                  <img
+                    :src="user.imagePath"
+                    style="width: 70px; height: 70px"
+                  />
+                </figure>
+              </td>
               <td>
                 <abbr title="id">{{ user.id }}</abbr>
               </td>
