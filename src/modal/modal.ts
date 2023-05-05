@@ -1,17 +1,5 @@
 import { ref } from "vue";
 
-export const mustShowModal = ref(false);
-
-export function showModal(){
-    mustShowModal.value = true;
-}
-
-export function closeModal(){
-    mustShowModal.value = false;
-}
-
-
-
 export interface Item{
     itemName: string;
     itemCategory:string;
@@ -38,7 +26,4 @@ const foodItems = [
         isAvailable:"yes",
     }
 ]
-
-export const items = ref<Item[]>(foodItems);
-
 

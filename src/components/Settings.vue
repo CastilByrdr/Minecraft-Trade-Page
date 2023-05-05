@@ -39,7 +39,7 @@ async function onUpdatePasswordClicked() {
               <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
-                  <input class="input" type="username" :value="user.username" />
+                  <input class="input" type="username" :value="user.username" disabled/>
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@ async function onUpdatePasswordClicked() {
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                  <input class="input" type="email" :value="user.email" />
+                  <input class="input" type="email" :value="user.email" disabled />
                 </div>
               </div>
             </div>
