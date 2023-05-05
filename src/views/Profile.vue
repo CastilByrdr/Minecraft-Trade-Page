@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { user } from '@/state/user';
+import { user } from "@/state/user";
 
 const trades = [
   { tradeName: "A", something: "sdfas" },
@@ -16,7 +16,10 @@ const trades = [
         <div class="media">
           <div class="media-left">
             <figure class="image is-48x48">
-              <img :src="user?.imagePath" style="width: 50px; height: 50px; border-radius: 50%;" />
+              <img
+                :src="user?.imagePath"
+                style="width: 50px; height: 50px; border-radius: 50%"
+              />
             </figure>
           </div>
           <div class="media-content">
@@ -25,20 +28,19 @@ const trades = [
         </div>
 
         <div class="content">
-          Hi my name is Mr. {{user?.username}}, and I would like to trade minecraft items.
-          Please take a loot at my list
+          Hi my name is Mr. {{ user?.username }}, and I would like to trade
+          minecraft items. Please take a loot at my list
         </div>
 
         <div class="tabs is-left">
           <ul>
             <RouterLink class="is-active" to="/profile/createPost"
-            >Create Trade</RouterLink>
+              >Create Trade</RouterLink
+            >
             <RouterLink class="is-active" to="/profile/list"
               >List of Trades</RouterLink
             >
-            <RouterLink to="/profile/message"
-              >Messages</RouterLink
-            >
+
             <RouterLink class="is-active" to="/profile/settings">
               Settings
             </RouterLink>
