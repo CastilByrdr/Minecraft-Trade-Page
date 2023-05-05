@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { showModal } from "@/modal/modal";
-import Modal from "@/components/Modal.vue";
+import CreatePostModal from "@/components/CreatePostModal.vue";
+import {
+  reloadCategoryItems,
+  showModal,
+} from "@/service/CreatePostModalService";
 import { ref } from "vue";
 
 interface Category {
@@ -66,6 +69,11 @@ const categories = ref<Category[]>([
     imagePath: "/src/assets/categories/pottery.png",
   },
 ]);
+
+async function onCategoryItemClicked(categoryName: string) {
+  await reloadCategoryItems(categoryName);
+  showModal();
+}
 </script>
 <template>
   <div class="container is-max-desktop mt-5">
@@ -75,10 +83,14 @@ const categories = ref<Category[]>([
         <figure class="image is-64x64">
           <img :src="category.imagePath" :alt="category.name" />
         </figure>
-        <button class="mt-2" @click="showModal" data-toggle="modal">
+        <button
+          class="mt-2"
+          @click="onCategoryItemClicked(category.name)"
+          data-toggle="modal"
+        >
           {{ category.name }}
         </button>
-        <Modal />
+        <CreatePostModal />
       </div>
     </div>
   </div>
