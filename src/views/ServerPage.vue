@@ -103,7 +103,7 @@ let addServerError: string | null = null;
   <div class="container">
     <div class="header">
       <!--<h1 class="title m-4">Welcome to <span>{{ server?.name }}'s</span> marketplace!</h1>-->
-      <h1 class="title m-4">Welcome to the Marketplace, <span>{{ user?.username }}</span>!</h1>
+      <h1 class="title m-4">Welcome to the Marketplace, <span class="has-text-success">{{ user?.username }}</span> !</h1>
     </div>
 
     <!--<div class="field">
@@ -130,9 +130,9 @@ let addServerError: string | null = null;
                 <p v-if="apiError" class="help is-danger">{{ apiError }}</p>
               </div>
     </div>-->
-    <div class="card is-justify-content-center">
+    <div class="card is-justify-content-center has-text-centered">
     <header class="card-header">
-      <p class="card-header-title">CURRENT LISTINGS:</p>
+      <p class="card-header-title is-size-4">CURRENT LISTINGS:</p>
     </header>
     <div class="food-list ml-2 mt-2 ">
       <progress
@@ -160,8 +160,14 @@ let addServerError: string | null = null;
             {{ food.quantity }}
           </i>
         </p>
+        <hr/>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Send Message</a>
+          <button
+            style="width: 100%"
+            class="button">
+            Message Seller
+          </button>
+          <!--<a href="#" class="card-footer-item">Message Seller</a>-->
           <br />
         </footer>
       </div>
@@ -204,6 +210,9 @@ let addServerError: string | null = null;
 </template>
 
 <style scoped>
+.button {
+  font-family: "Minecraft";
+}
 .food-list {
   display: flex;
   flex-wrap: wrap;
@@ -225,5 +234,10 @@ let addServerError: string | null = null;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   background-color: aliceblue;
+}
+hr {
+  margin: 10px;
+  background-color:lightgrey;
+  height: 3px;
 }
 </style>

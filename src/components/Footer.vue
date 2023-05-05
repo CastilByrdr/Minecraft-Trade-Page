@@ -9,7 +9,6 @@
    
 <style scoped>
 .footercomp {
-   color: white;
    background-color: rgb(105, 172, 235);
 }
 a {

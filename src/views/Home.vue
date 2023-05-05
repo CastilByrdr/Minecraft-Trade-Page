@@ -7,7 +7,7 @@
   <div class="container">
     <div class ="welcome">
       <h1 v-if="isUserLoggedIn" class="title m-4">Welcome, 
-        <span>{{ user?.username }}</span> !
+        <span class="has-text-success">{{ user?.username }}</span> !
       </h1>
       <h1 v-else class="title m-4">Welcome, user! Please register/login!</h1>
     </div>
@@ -84,5 +84,11 @@
   border-radius: 5px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+hr {
+  margin: 10px;
+  background-color:lightgrey;
+  height: 3px;
 }
 </style>
