@@ -50,7 +50,7 @@ async function onLogout() {
           <span>Home</span>
         </router-link>
         <router-link
-          to="/profile"
+          to="/profile/list"
           class="navbar-item"
           v-if="isUserLoggedIn">
           <span>Profile</span>
