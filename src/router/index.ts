@@ -6,7 +6,7 @@ import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import Profile from "@/views/Profile.vue";
 import TradeLists from "@/views/TradeLists.vue";
-import TradeList from "@/views/TradeList.vue";
+import UserTradeList from "@/views/UserTradeList.vue";
 import TradeMessage from "@/views/TradeMessage.vue";
 import Users from "@/views/Users.vue";
 import Settings from "@/components/Settings.vue";
@@ -96,9 +96,9 @@ const router = createRouter({
           beforeEnter: authGuard,
         },
         {
-          path: "/profile/list",
-          name: "tradeList",
-          component: TradeList,
+          path: "/profile/userList",
+          name: "userTradeList",
+          component: UserTradeList,
           beforeEnter: authGuard,
         },
         {
