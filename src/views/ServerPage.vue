@@ -12,7 +12,7 @@
   } from "@/service/ServerService";
   import { ref, computed, reactive } from "vue";
   const apiError = ref("");
-  //import { product } from "../state/product"
+  //import { listing } from "../state/listing"
  
   const serverRegisterState = reactive({
     ipAddress: "huckleberry.aternos.me",
@@ -151,8 +151,8 @@ let addServerError: string | null = null;
           {{ food.username }}
         </p>
         <p>
-           <span>Posted:</span>
-           {{ food.dateTime }}
+          <span>Posted:</span>
+          {{ food.dateTime }}
         </p>
         <p>
           <span>Qty Available: </span>
@@ -165,9 +165,9 @@ let addServerError: string | null = null;
           <button
             style="width: 100%"
             class="button">
-            Message Seller
+            Send Message
           </button>
-          <!--<a href="#" class="card-footer-item">Message Seller</a>-->
+          <!--<a href="#" class="card-footer-item">Send Message</a>-->
           <br />
         </footer>
       </div>
@@ -180,27 +180,27 @@ let addServerError: string | null = null;
     </header>
     <div class="listings-list ml-2 mt-2 ">
       <progress
-        v-if="!products.length"
+        v-if="!listings.length"
         class="progress is-large is-info"
         max="100"
       >
         60%
       </progress>
 
-<div class="listings" v-for="product in products" :key="product.id">
-        <h3>{{ product.itemName }}</h3>
-        <img :src="product.imageURL" :alt="product.itemName" class="image" />
-        <p>{{ product.postedBy }}</p>
-        <time datetime="2016-1-1"> {{ product.dateTime }}</time>
+<div class="listings" v-for="listing in listings" :key="listing.id">
+        <h3>{{ listing.itemName }}</h3>
+        <img :src="listing.imageURL" :alt="listing.itemName" class="image" />
+        <p>{{ listing.postedBy }}</p>
+        <time datetime="2016-1-1"> {{ listing.dateTime }}</time>
         <p>
-          <span>Qty: </span>
+          <span>Qty Available: </span>
           <i class="quantity">
-            {{ product.quantity }}
+            {{ listing.quantity }}
           </i>
         </p>
         <footer class="card-footer">
-          <a v-if="user?.username == product.postedBy" href="#" class="card-footer-item">Edit Listing</a>
-          <a href="#" class="card-footer-item">Message Trader</a>
+          <a v-if="user?.username == listing.postedBy" href="#" class="card-footer-item">Edit Listing</a>
+          <a href="#" class="card-footer-item">Send Message</a>
           <br/>
         </footer>
       </div>

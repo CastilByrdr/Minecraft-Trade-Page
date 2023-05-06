@@ -23,7 +23,7 @@ export const LocalStorage = {
   },
 
   //currently connected server
-  getCurrentServer(): Server {
+  getCurrentServer(): Server | null {
     const server = localStorage.getItem(LocalStorageKeys.currentServer);
 
     return server ? JSON.parse(server) : null;

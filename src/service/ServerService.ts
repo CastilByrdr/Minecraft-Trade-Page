@@ -25,34 +25,34 @@ export async function findServer(ipAddress: number): Promise<Server[]> {
   return data;
 }
 
-export async function reloadServers() {
+/*export async function reloadServers() {
   const { data } = await axios.get<Server[]>(API_URL + "/server");
   servers.value = data;
 }
 
-/*export const AuthApi = {
-  async login(loginModel: ConnectModel): Promise<Server> {
-    const { data } = await axios.post<Server>(API_URL + "/login", loginModel);
+export const AuthApi = {
+  async connect(connectModel: ConnectModel): Promise<Server> {
+    const { data } = await axios.post<Server>(API_URL + "/connect", connectModel);
     return data;
   },
 
-  async logout(userId: number) {
-    const { data } = await axios.post<Server>(`${API_URL}/logout/${userId}`);
+  async disconnect(serverId: number) {
+    const { data } = await axios.post<Server>(`${API_URL}/disconnect/${serverId}`);
     return data;
   },
 };
 
 export const AuthServer = {
   async connect(ipAddress: string, name: string) {
-    const { data } = await axios.post<Server>(API_URL + "/login", );
+    const { data } = await axios.post<Server>(API_URL + "/connect", );
     return data;
     //server.value = await AuthApi.login({ ipAddress, name });
     //LocalStorage.setCurrentUser(user.value);
   },
-  async disconnect(userId: number) {
-    await AuthApi.logout(serverId);
+  async disconnect(serverId: number) {
+    await AuthApi.disconnect(serverId);
     server.value = null;
-    LocalStorage.removeCurrentUser();
+    LocalStorage.removeCurrentServer();
   },
 };*/
 
