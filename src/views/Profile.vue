@@ -28,7 +28,7 @@ const trades = [
         </div>
 
         <div class="content">
-          Hi my name is Mr. {{ user?.username }}, and I would like to trade
+          Hi, I am {{ user?.username }}, and I would like to trade
           minecraft items. Please take a loot at my list
         </div>
 
