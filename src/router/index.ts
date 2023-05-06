@@ -9,7 +9,6 @@ import TradeList from "@/views/TradeList.vue";
 import TradeMessage from "@/views/TradeMessage.vue";
 import Users from "@/views/Users.vue";
 import Settings from "@/components/Settings.vue";
-// import ServerPage from "@/views/ServerPage.vue";
 import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
@@ -92,16 +91,19 @@ const router = createRouter({
           path:"/profile/createPost",
           name:"createPost",
           component: CreatePost,
+          beforeEnter: authGuard,
         },
         {
           path: "/profile/list",
           name: "tradeList",
           component: TradeList,
+          beforeEnter: authGuard,
         },
         {
           path: "/profile/message",
           name: "tradeMessage",
           component: TradeMessage,
+          beforeEnter: authGuard,
         },
         {
           path:"/profile/settings",
