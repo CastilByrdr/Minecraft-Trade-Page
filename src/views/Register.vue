@@ -41,6 +41,7 @@ async function onRegisterClicked(
       email,
       isAdmin: false,
       lastActive: "",
+      imagePath: "",
     });
     router.push("/");
   } catch (error: any) {

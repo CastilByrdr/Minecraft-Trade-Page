@@ -5,6 +5,7 @@ import ListFoods from "@/views/ListFoods.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import Profile from "@/views/Profile.vue";
+import TradeLists from "@/views/TradeLists.vue";
 import TradeList from "@/views/TradeList.vue";
 import TradeMessage from "@/views/TradeMessage.vue";
 import Users from "@/views/Users.vue";
@@ -72,11 +73,12 @@ const router = createRouter({
       name: "itemCategories",
       component: ItemCategories,
     },
-    // {
-    //   path: "/createPost",
-    //   name: "createPost",
-    //   component: CreatePost,
-    // },
+    {
+      path: "/tradeLists",
+      name: "tradeLists",
+      component: TradeLists,
+      beforeEnter: authGuard,
+    },
     {
       path: "/itemCategories",
       name: "itemCategories",
