@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import type { Trade } from "@/model/Trade";
-import { deleteTrade, getTradesByUser } from "@/service/TradeService";
-import { user } from "@/state/user";
+import { deleteTrade, getTrades } from "@/service/TradeService";
 import { format } from "date-fns";
 import { ref } from "vue";
 
 const trades = ref<Trade[]>([]);
 
+reloadTrades();
 
-reloadTrades(user.value!.id);
-
-async function reloadTrades(userId: number) {
-  trades.value = await getTradesByUser(userId);
+async function reloadTrades() {
+  trades.value = await getTrades();
 }
 
 async function onCloseTradeClicked(tradeId: number) {
   await deleteTrade(tradeId);
-  await reloadTrades(user.value!.id);
+  await reloadTrades();
 }
 </script>
 
@@ -44,12 +42,6 @@ async function onCloseTradeClicked(tradeId: number) {
           }}</time>
         </div>
         <footer class="card-footer">
-          <a
-            href="#"
-            @click="onCloseTradeClicked(trade!.id)"
-            class="card-footer-item"
-            >Close Trade</a
-          >
           <a
             href="#"
             class="card-footer-item"

@@ -17,6 +17,12 @@ export async function getTrades(): Promise<Trade[]> {
   return data;
 }
 
+
+export async function getTradesByUser(userId: number): Promise<Trade[]> {
+  const { data } = await axios.get<Trade[]>(API_URL + "/trade/" + userId);
+  return data;
+}
+
 export async function deleteTrade(tradeId: number): Promise<Trade> {
   const { data } = await axios.delete<Trade>(API_URL + "/trade/" + tradeId);
   return data;
