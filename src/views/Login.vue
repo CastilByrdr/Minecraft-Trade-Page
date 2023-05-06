@@ -23,7 +23,7 @@ async function onLoginClicked() {
     await AuthService.login(username.value, password.value);
     await Router.goToHomePage();
   } catch (error: any) {
-    loginError = error.message ?? "Could not error";
+    loginError = error.message ?? "Could not login";
   }
 }
 </script>
