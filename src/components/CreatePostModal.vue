@@ -23,7 +23,7 @@ async function onCreatePostClicked() {
 
   await createTrade(createTradeModel);
   closeModal();
-  router.push({ path: "/profile/list" });
+  router.push({ path: "/profile/userList" });
 }
 </script>
 

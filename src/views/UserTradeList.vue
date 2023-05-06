@@ -3,10 +3,11 @@ import type { Trade } from "@/model/Trade";
 import { deleteTrade, getTradesByUser } from "@/service/TradeService";
 import { user } from "@/state/user";
 import { format } from "date-fns";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const trades = ref<Trade[]>([]);
 
+const isUserTradeExits = computed(() => trades.value.length == 0);
 
 reloadTrades(user.value!.id);
 
@@ -22,6 +23,7 @@ async function onCloseTradeClicked(tradeId: number) {
 
 <template>
   <div class="columns mt-5">
+    <h1 class="title ml-5 has-text-danger" v-if="!!isUserTradeExits">No Trade Items in Minecraft Market Place Created</h1>
     <div class="column" v-for="trade in trades">
       <div class="card has-background-primary-light">
         <div class="card-content">

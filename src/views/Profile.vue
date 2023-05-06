@@ -37,7 +37,7 @@ const trades = [
             <RouterLink class="is-active" to="/profile/createPost"
               >Create Trade</RouterLink
             >
-            <RouterLink class="is-active" to="/profile/list"
+            <RouterLink class="is-active" to="/profile/userList"
               >List of Trades</RouterLink
             >
 
