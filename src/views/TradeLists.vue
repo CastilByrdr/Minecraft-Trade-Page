@@ -3,6 +3,9 @@ import type { Trade } from "@/model/Trade";
 import { deleteTrade, getTrades } from "@/service/TradeService";
 import { format } from "date-fns";
 import { ref } from "vue";
+import router from "@/router";
+import { AuthService } from "@/service/AuthService";
+import { isUserLoggedIn, user } from "../state/user";
 
 const trades = ref<Trade[]>([]);
 
@@ -42,11 +45,15 @@ async function onCloseTradeClicked(tradeId: number) {
           }}</time>
         </div>
         <footer class="card-footer">
-          <a
-            href="#"
+          <router-link
+            to="/chatLogin"
             class="card-footer-item"
-            >Chat</a
-          >
+            v-if="isUserLoggedIn">
+            <a
+            href="#"
+            >Chat</a>
+          </router-link>
+         >
         </footer>
       </div>
     </div>
