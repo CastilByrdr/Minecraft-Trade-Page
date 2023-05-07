@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { Trade } from "@/model/Trade";
-import { deleteTrade, getTrades } from "@/service/TradeService";
+import type { User } from "@/model/UserModel";
+import { quickUserUserModal, showUserModal, reloadTradesByUser } from "@/service/CreateUserModalService";
+import QuickUserProfileModal from '@/components/QuickUserProfileModal.vue';
+import { getTrades } from "@/service/TradeService";
+import { user } from "@/state/user";
 import { format } from "date-fns";
 import { ref } from "vue";
 
@@ -12,10 +16,12 @@ async function reloadTrades() {
   trades.value = await getTrades();
 }
 
-async function onCloseTradeClicked(tradeId: number) {
-  await deleteTrade(tradeId);
-  await reloadTrades();
+async function onUsernameClicked(user: User){
+  quickUserUserModal.value = user;
+  await reloadTradesByUser(user.id);
+  showUserModal();
 }
+
 </script>
 
 <template>
@@ -26,17 +32,21 @@ async function onCloseTradeClicked(tradeId: number) {
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <img :src="trade.categoryItem.image" alt="Placeholder image" />
-              </figure>
+                <img :src="trade.categoryItem.image" 
+                alt="Placeholder image"/>
+              </figure>      
             </div>
             <div class="media-content">
-              <p class="title">@{{ trade.user.username }}</p>
+              <div class="title"
+              @click="onUsernameClicked(trade.user)" 
+                >@{{ trade.user.username }}</div>
               <p class="subtitle">
                 <p>{{ trade.categoryItem.category }}</p>
                 <p>{{ trade.categoryItem.name }}</p>
               </p>
             </div>
           </div>
+          <QuickUserProfileModal />
           <time datetime="2023-1-1">{{
             format(new Date(trade.createdDate), "MM/dd/yyyy hh:ss aa")
           }}</time>
