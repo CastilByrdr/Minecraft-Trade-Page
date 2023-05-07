@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Trade } from "@/model/Trade";
 import type { User } from "@/model/UserModel";
-import { quickUserUserModal, showUserModal } from "@/service/CreateUserModalService";
+import { quickUserUserModal, showUserModal, reloadTradesByUser } from "@/service/CreateUserModalService";
 import QuickUserProfileModal from '@/components/QuickUserProfileModal.vue';
 import { getTrades } from "@/service/TradeService";
 import { user } from "@/state/user";
@@ -18,6 +18,7 @@ async function reloadTrades() {
 
 async function onUsernameClicked(user: User){
   quickUserUserModal.value = user;
+  await reloadTradesByUser(user.id);
   showUserModal();
 }
 
