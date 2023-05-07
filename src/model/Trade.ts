@@ -9,10 +9,14 @@ export interface Trade {
   categoryItemId: number;
   createdDate: string;
   description: string;
+  serverIpAddress: string;
+  quantity: string;
 }
 
 export interface CreateTradeModel {
   userId: number;
   categoryItemId: number;
   description: string;
+  serverIpAddress: string;
+  quantity: string;
 }

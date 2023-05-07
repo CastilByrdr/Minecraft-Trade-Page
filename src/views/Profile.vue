@@ -28,8 +28,8 @@ const trades = [
         </div>
 
         <div class="content">
-          Hi, I am {{ user?.username }}, and I would like to trade
-          minecraft items. Please take a loot at my list
+          Hi, I am {{ user?.username }} and I would like to trade
+          minecraft items. Please take a look at my list.
         </div>
 
         <div class="tabs is-left">
@@ -44,7 +44,6 @@ const trades = [
             <RouterLink class="is-active" to="/profile/settings">
               Settings
             </RouterLink>
-            <li><a>Server</a></li>
           </ul>
         </div>
       </div>
@@ -53,4 +52,8 @@ const trades = [
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card-content {
+  padding-bottom: 5px;
+}
+</style>

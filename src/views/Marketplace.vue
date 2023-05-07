@@ -1,31 +1,31 @@
 <script setup lang="ts">
 import type { Trade } from "@/model/Trade";
-import { deleteTrade, getTradesByUser } from "@/service/TradeService";
+import { deleteTrade, getTrades } from "@/service/TradeService";
 import { user } from "@/state/user";
 import { format } from "date-fns";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 const trades = ref<Trade[]>([]);
 
-const isUserTradeExits = computed(() => trades.value.length == 0);
+reloadTrades();
 
-reloadTrades(user.value!.id);
-
-async function reloadTrades(userId: number) {
-  trades.value = await getTradesByUser(userId);
+async function reloadTrades() {
+  trades.value = await getTrades();
 }
 
 async function onCloseTradeClicked(tradeId: number) {
   await deleteTrade(tradeId);
-  await reloadTrades(user.value!.id);
+  await reloadTrades();
 }
 </script>
 
 <template>
+  <div class="header">
+      <h1 class="title m-4">Welcome to the Marketplace, <span class="has-text-success">{{ user?.username }}</span> !</h1>
+  </div>
   <div class="columns mt-5">
-    <h1 class="title ml-5 has-text-danger" v-if="!!isUserTradeExits">No Trade Listings in Minecraft Marketplace Active</h1>
     <div class="column" v-for="trade in trades">
-      <div class="card has-background-primary-light">
+      <div class="card">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -35,33 +35,61 @@ async function onCloseTradeClicked(tradeId: number) {
             </div>
             <div class="media-content">
               <p class="title">@{{ trade.user.username }}</p>
-              <p class="subtitle">
+              <p class="subtitle"> 
                 <p class="has-text-link-dark">Server IP: {{ trade.serverIpAddress }}</p>
-                <p>Category: {{ trade.categoryItem.category }}</p>
                 <p>Item: {{ trade.categoryItem.name }}</p>
-                <p>Quantity Available: {{ trade.quantity }}</p>
+                <p>Category: {{ trade.categoryItem.category }}</p>
+                <p>Qty Available: {{ trade.quantity }}</p>
                 <p v-if="trade.description.length != 0"><br>{{ trade.description }}</p>
                 <p v-else><br><br></p>
               </p>
             </div>
           </div>
-          <p>Posted:
+          <p>Posted: 
           <time datetime="2023-1-1">{{
             format(new Date(trade.createdDate), "MM/dd/yyyy hh:ss aa")
           }}</time>
           </p>
         </div>
         <footer class="card-footer">
-          <button
+
+          <button v-if="trade.user.username === user?.username"
             style="width: 100%"
-            class="button card-footer-item m-4"
+            class="button m-4"
             @click="onCloseTradeClicked(trade!.id)">
             Delete Listing
           </button>
+
+          <router-link v-else
+            to="/message"
+            custom
+            v-slot="{ navigate }"
+          >
+            <button
+            style="width: 100%"
+            class="button m-4"
+            @click="navigate"
+            role="link"
+            >
+              Send Message
+            </button>
+          </router-link>
+          <!--<a href="#" class="card-footer-item">Send Message</a>-->
+          <br />
         </footer>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.button {
+  font-family: "Minecraft";
+}
+.card {
+  background-color: aliceblue;
+}
+.card-content {
+  padding-bottom: 5px;
+}
+</style>

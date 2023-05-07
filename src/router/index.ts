@@ -1,16 +1,13 @@
 import CreatePost from "@/components/CreatePost.vue";
-import About from "@/views/About.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
-import ListFoods from "@/views/ListFoods.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import Profile from "@/views/Profile.vue";
-import TradeLists from "@/views/TradeLists.vue";
+import Marketplace from "@/views/Marketplace.vue";
 import UserTradeList from "@/views/UserTradeList.vue";
 import TradeMessage from "@/views/TradeMessage.vue";
 import Users from "@/views/Users.vue";
 import Settings from "@/components/Settings.vue";
-import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import { authGuard } from "./RouterGuard";
@@ -34,28 +31,10 @@ const router = createRouter({
       component: Register,
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: About,
-    },
-    {
-      path: "/listFoods",
-      name: "listFoods",
-      component: ListFoods,
-    },
-    {
       path: "/users",
       name: "users",
       component: Users,
       beforeEnter: authGuard,
-    },
-    {
-      path: "/serverPage",
-      name: "serverPage",
-      component: ServerPage,
     },
     // {
     //   path: "/userProfile",
@@ -74,9 +53,9 @@ const router = createRouter({
       component: ItemCategories,
     },
     {
-      path: "/tradeLists",
-      name: "tradeLists",
-      component: TradeLists,
+      path: "/marketplace",
+      name: "marketplace",
+      component: Marketplace,
       beforeEnter: authGuard,
     },
     {

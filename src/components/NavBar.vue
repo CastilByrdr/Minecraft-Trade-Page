@@ -47,18 +47,18 @@ async function onLogout() {
         <router-link to="/" class="navbar-item">
           <span>Home</span>
         </router-link>
-
+        <router-link
+          to="/marketplace"
+          class="navbar-item"
+          v-if="isUserLoggedIn">
+          <span>Marketplace</span>
+        </router-link>
         <router-link
           to="/profile/userList"
           class="navbar-item"
           v-if="isUserLoggedIn">
           <span>Profile</span>
         </router-link>
-
-        <router-link to="/tradeLists" class="navbar-item" v-if="isUserLoggedIn">
-          <span>Trade Lists</span>
-        </router-link>
-
         <div
           class="navbar-item has-dropdown is-hoverable"
           v-if="isUserLoggedIn && !!user!.isAdmin"

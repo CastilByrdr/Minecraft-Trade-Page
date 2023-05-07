@@ -12,6 +12,8 @@ import { user } from "@/state/user";
 import { ref } from "vue";
 
 const description = ref("");
+const serverIpAddress = ref("");
+const quantity = ref("");
 const currentCategoryItem = ref<CategoryItem | null>(null);
 
 async function onCreatePostClicked() {
@@ -19,6 +21,8 @@ async function onCreatePostClicked() {
     userId: user.value!.id,
     categoryItemId: currentCategoryItem.value!.id,
     description: description.value,
+    serverIpAddress: serverIpAddress.value,
+    quantity: quantity.value
   };
 
   await createTrade(createTradeModel);
@@ -53,15 +57,30 @@ async function onCreatePostClicked() {
         </div>
 
         <div class="field">
+          <label class="label">Server Ip Address</label>
+          <div class="control">
+            <input type="text" style="width: 300px" v-model="serverIpAddress" placeholder="Enter Ip Address of desired Minecraft Server"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Quantity Available</label>
+          <div class="control">
+            <input type="text" style="width: 300px" v-model="quantity" placeholder="Enter quantity of item available"/>
+          </div>
+        </div>
+
+        <div class="field">
           <label class="label">Description</label>
           <div class="control">
             <textarea
               v-model="description"
               class="textarea"
-              placeholder="Textarea"
+              placeholder="Enter listing description (availability details, desired items to trade for, etc)"
             ></textarea>
           </div>
         </div>
+
       </section>
       <footer class="modal-card-foot">
         <button
