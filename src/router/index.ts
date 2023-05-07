@@ -14,6 +14,9 @@ import ServerPage from "@/views/ServerPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import { authGuard } from "./RouterGuard";
+import Chat from '../views/Chat.vue'
+import ChatLogin from '../views/ChatLogin.vue'
+import Vue from 'vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,6 +83,16 @@ const router = createRouter({
       beforeEnter: authGuard,
     },
     {
+      path: '/chatLogin',
+      name: 'chatLogin',
+      component: ChatLogin
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: Chat
+    },
+    {
       path: "/itemCategories",
       name: "itemCategories",
       component: ItemCategories,
@@ -112,7 +125,7 @@ const router = createRouter({
           name:"settings",
           component: Settings,
           beforeEnter: authGuard,
-        },
+        }
       ],
     },
   ],
