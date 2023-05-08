@@ -68,4 +68,7 @@ async function onCloseTradeClicked(tradeId: number) {
 .card {
   background-color: aliceblue;
 }
+button {
+  font-family: "Minecraft";
+}
 </style>

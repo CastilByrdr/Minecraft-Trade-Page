@@ -30,7 +30,7 @@ import { format } from "date-fns";
 
           <div class="content">
             Hi, I am {{ quickUserUserModal?.username }}, and I would like to
-            trade minecraft items. Please take a loot at my list
+            trade minecraft items. Please take a look at my list.
 
             <div class="columns mt-5">
               <div class="column" v-for="trade in trades">
@@ -47,14 +47,20 @@ import { format } from "date-fns";
                         <div class="title"
                           >@{{ trade.user.username }}</div>
                         <p class="subtitle">
-                          <p>{{ trade.categoryItem.category }}</p>
-                          <p>{{ trade.categoryItem.name }}</p>
+                          <p class="has-text-link-dark">Server IP: {{ trade.serverIpAddress }}</p>
+                          <p>Category: {{ trade.categoryItem.category }}</p>
+                          <p>Item: {{ trade.categoryItem.name }}</p>
+                          <p>Quantity Available: {{ trade.quantity }}</p>
+                          <p v-if="trade.description.length != 0"><br>{{ trade.description }}</p>
+                          <p v-else><br><br></p>
                         </p>
                       </div>
                     </div>
-                    <time datetime="2023-1-1">{{
-                      format(new Date(trade.createdDate), "MM/dd/yyyy hh:ss aa")
-                    }}</time>
+                    <p>Posted:
+                      <time datetime="2023-1-1">{{
+                          format(new Date(trade.createdDate), "MM/dd/yyyy hh:ss aa")
+                      }}</time>
+                    </p>
                   </div>
                   <footer class="card-footer">
                     <a
