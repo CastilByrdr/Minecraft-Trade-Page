@@ -22,7 +22,7 @@ async function onCloseTradeClicked(tradeId: number) {
 </script>
 
 <template>
-  <div class="columns mt-5">
+  <div class="tradelist mt-5">
     <h1 class="title ml-5 has-text-danger" v-if="!!isUserTradeExits">No Trade Listings in Minecraft Marketplace Active</h1>
     <div class="column" v-for="trade in trades">
       <div class="card">
@@ -67,5 +67,21 @@ async function onCloseTradeClicked(tradeId: number) {
 <style scoped>
 .card {
   background-color: aliceblue;
+}
+.tradelist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1.50rem;
+}
+
+.tradelist .card{
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+}
+
+.tradelist .card .card-content {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
 }
 </style>
