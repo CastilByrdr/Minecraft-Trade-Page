@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Trade } from "@/model/Trade";
 import type { User } from "@/model/UserModel";
-import { quickUserUserModal, showUserModal, reloadTradesByUser } from "@/service/CreateUserModalService";
+import { quickUserUserModal, showUserModal, reloadTradesByUser } from "@/service/QuickUserModalService";
 import QuickUserProfileModal from '@/components/QuickUserProfileModal.vue';
 import { getTrades } from "@/service/TradeService";
 import { user } from "@/state/user";

@@ -4,7 +4,7 @@ import {
   mustShowUserModal,
   trades,
   closeUserModal
-} from "@/service/CreateUserModalService";
+} from "@/service/QuickUserModalService";
 import { format } from "date-fns";
 </script>
 
