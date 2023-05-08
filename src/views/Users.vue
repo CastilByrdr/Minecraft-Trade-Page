@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { deleteUser, getAllUsers, reloadUsers } from "@/service/UserService";
+import { formatDistanceToNow } from "date-fns";
 import { users } from "../state/user";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 async function getUsers() {
   const allUsers = await getAllUsers();
