@@ -43,7 +43,7 @@ async function onRegisterClicked(
       lastActive: "",
       imagePath: "",
     });
-    router.push("/");
+    router.push("/login");
   } catch (error: any) {
     user.value = null;
     apiError.value =
