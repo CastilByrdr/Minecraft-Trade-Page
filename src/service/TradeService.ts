@@ -18,7 +18,7 @@ export async function getTrades(): Promise<Trade[]> {
   return data;
 }
 
-export async function reloadTrades() {
+export async function reloaddTrades() {
   const { data } = await axios.get<Trade[]>(API_URL + "/trade");
   trades.value = data;
 }

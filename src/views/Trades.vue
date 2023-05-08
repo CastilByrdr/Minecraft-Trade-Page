@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Trade } from "@/model/Trade";
-import { getTrades } from "@/service/TradeService";
+import { deleteTrade, getTrades, reloaddTrades } from "@/service/TradeService";
 import { format } from "date-fns";
 import { ref } from "vue";
 import { users } from "../state/user";
@@ -9,6 +9,11 @@ const trades = ref<Trade[]>([]);
 
 getTrades();
 reloadTrades();
+
+async function onDeleteTradeClicked(tradeId: number) {
+  await deleteTrade(tradeId);
+  await reloadTrades();
+}
 
 async function reloadTrades() {
   trades.value = await getTrades();
@@ -67,13 +72,13 @@ async function reloadTrades() {
               <td>
                 <abbr title="quantity">{{ trade.quantity }}</abbr>
               </td>
-              <!-- <th>
+              <th>
                 <abbr title="Played">
-                  <button class="button" @click="onDeleteUserClicked(user.id)">
+                  <button class="button" @click="onDeleteTradeClicked(trade.id)">
                     <i class="fas fa-trash"></i>
                   </button>
                 </abbr>
-              </th> -->
+              </th>
             </tr>
           </tbody>
         </table>
