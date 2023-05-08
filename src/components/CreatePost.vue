@@ -4,12 +4,12 @@
 
 <template>
     <div class="container is-max-desktop mt-5">
-        <h1 class="title">Trade Items in Minecraft Market Place</h1>
+        <h1 class="title">Trade Items in Minecraft Marketplace</h1>
 
         <div class="container" mt-5>
             <router-link to = "/ItemCategories">
             <img src="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1065/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/811461b8d1cacf1f2da791b478dccfe2a55457780364c3d5a95fbfcdd4c3086f">
-            <button class="button is-primary is-light">Trade Now</button>
+            <button class="button is-primary is-light has-text-link">Create Listing</button>
             </router-link>
         </div>
         
@@ -17,6 +17,9 @@
 </template>
 
 <style scoped>
+button {
+  font-family: "Minecraft";
+}
 .container {
     position:relative;
     width: 100%;

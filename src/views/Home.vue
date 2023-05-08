@@ -6,10 +6,11 @@
 <template>
   <div class="container">
     <div class ="welcome">
-      <h1 v-if="isUserLoggedIn" class="title m-4">Welcome, 
+      <h1 v-if="isUserLoggedIn" class="title m-4 greeting">Welcome, 
         <span class="has-text-success">{{ user?.username }}</span> !
       </h1>
-      <h1 v-else class="title m-4">Welcome, user! Please register/login to get started!</h1>
+      <h1 v-else class="title m-4 greeting">Welcome, user! Please register/login to get started!</h1>
+      <img class="image is-48x48 m-2 greeting" src="/graphics/compass.gif" alt="compass gif">
     </div>
 
     <hr/>
@@ -31,22 +32,22 @@
     <div class="m-4">
       <h3 class="title">Meet the Development Team:</h3>
       <div class="cards p-4 has-text-centered">
-        <img class="is-rounded" src="/graphics/user.png" alt="profile image">
+        <img class="round" src="/profile/mcpfp - Joseph.png" alt="profile image">
         <h1 class="title">Joseph Ertman</h1>
         <h1 class="subtitle">Product Owner</h1>
       </div>
       <div class="cards p-4 has-text-centered">
-        <img src="/graphics/user.png" alt="profile image">
+        <img class="round" src="/profile/mcpfp - Fiona.png" alt="profile image">
         <h1 class="title">Fiona Kennedy</h1>
         <h1 class="subtitle">Scrum Master</h1>
       </div>
       <div class="cards p-4 has-text-centered">
-        <img src="/graphics/user.png" alt="profile image">
+        <img class="round" src="/profile/mcpfp - Michelle.png" alt="profile image">
         <h1 class="title">Michelle Zhunio</h1>
         <h1 class="subtitle">Developer</h1>
       </div>
       <div class="cards p-4 has-text-centered">
-        <img src="/graphics/user.png" alt="profile image">
+        <img class="round" src="/profile/mcpfp - Gisela.png" alt="profile image">
         <h1 class="title">Gisela Fugon</h1>
         <h1 class="subtitle">Developer</h1>
       </div>
@@ -56,14 +57,14 @@
 
     <div class="m-4"> 
       <h3 class="title">How to get started:</h3>
-      <p>
-        1. Register for an account on our website by clicking the register
-        button at the top right of the page.<br />
-        2. Once you are logged in, you can visit your Profile Page where you can
-        edit your account information, post trade listings and view all of your active listings.<br />
-        3. Visit the Marketplace page to view/inquire about all users' active listings. You can find listings for your
-        desired Minecraft Server by typing the IP Address in the Search Bar at the top of the page.
-      </p>
+      <ol class="m-4">
+        <li>Register for an account on our website by clicking the register
+        button at the top right of the page.</li><br />
+        <li>Once you are logged in, you can visit your Profile Page where you can
+        edit your account information, post trade listings and view all of your active listings.</li><br />
+        <li>Visit the Marketplace page to view/inquire about all users' active listings. You can find listings for your
+        desired Minecraft Server by typing the IP Address in the Search Bar at the top of the page.</li>
+      </ol>
     </div>
 
   </div>
@@ -80,6 +81,13 @@
   border-radius: 5px;
   margin-left: 20px;
   margin-right: 20px;
+}
+.greeting {
+  display: inline-block;
+  vertical-align: middle;
+}
+.round {
+  border-radius: 50%;
 }
 
 hr {

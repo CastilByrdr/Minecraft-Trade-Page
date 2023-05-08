@@ -20,8 +20,20 @@ async function onCloseTradeClicked(tradeId: number) {
 </script>
 
 <template>
-  <div class="header">
-      <h1 class="title m-4">Welcome to the Marketplace, <span class="has-text-success">{{ user?.username }}</span> !</h1>
+  <div class="header has-text-centered">
+      <img class="image is-64x64 m-2 content" src="/graphics/parrot.gif" alt="parrot gif">
+      <h1 class="title m-4 content">Welcome to the Marketplace, <span class="has-text-success">{{ user?.username }}</span> !</h1>
+      <img class="image is-64x64 mx-2 content" src="/graphics/bee.gif" alt="bee gif">
+  </div>
+  <div class="has-text-centered ">
+    <RouterLink class="is-active" v-slot="{ navigate }" to="/profile/createPost">
+        <button
+          @click="navigate"
+          role="link"
+          class="button is-size-4 has-text-link create">
+          Create Listing
+      </button>
+    </RouterLink>
   </div>
   <div class="columns mt-5">
     <div class="column" v-for="trade in trades">
@@ -74,7 +86,6 @@ async function onCloseTradeClicked(tradeId: number) {
               Send Message
             </button>
           </router-link>
-          <!--<a href="#" class="card-footer-item">Send Message</a>-->
           <br />
         </footer>
       </div>
@@ -83,13 +94,21 @@ async function onCloseTradeClicked(tradeId: number) {
 </template>
 
 <style scoped>
-.button {
+button {
   font-family: "Minecraft";
+}
+.create {
+  border-radius: 5px;
+  background-color: aliceblue;
 }
 .card {
   background-color: aliceblue;
 }
 .card-content {
   padding-bottom: 5px;
+}
+.content {
+  display: inline-block;
+  vertical-align: middle;
 }
 </style>

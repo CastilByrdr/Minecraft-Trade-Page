@@ -25,7 +25,7 @@ async function onCloseTradeClicked(tradeId: number) {
   <div class="columns mt-5">
     <h1 class="title ml-5 has-text-danger" v-if="!!isUserTradeExits">No Trade Listings in Minecraft Marketplace Active</h1>
     <div class="column" v-for="trade in trades">
-      <div class="card has-background-primary-light">
+      <div class="card">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -64,4 +64,8 @@ async function onCloseTradeClicked(tradeId: number) {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card {
+  background-color: aliceblue;
+}
+</style>

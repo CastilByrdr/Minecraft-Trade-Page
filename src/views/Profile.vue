@@ -11,7 +11,7 @@ const trades = [
 
 <template>
   <div class="container mt-5">
-    <div class="card has-background-primary-light">
+    <div class="card">
       <div class="card-content">
         <div class="media">
           <div class="media-left">
@@ -35,10 +35,10 @@ const trades = [
         <div class="tabs is-left">
           <ul>
             <RouterLink class="is-active" to="/profile/createPost"
-              >Create Trade</RouterLink
+              >Create Listing</RouterLink
             >
             <RouterLink class="is-active" to="/profile/userList"
-              >List of Trades</RouterLink
+              >My Listings</RouterLink
             >
 
             <RouterLink class="is-active" to="/profile/settings">
@@ -55,5 +55,8 @@ const trades = [
 <style scoped>
 .card-content {
   padding-bottom: 5px;
+}
+.card {
+  background-color: aliceblue;
 }
 </style>
