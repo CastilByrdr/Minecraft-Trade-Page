@@ -73,6 +73,13 @@ async function onLogout() {
             >
               <span>Users</span>
             </router-link>
+            <router-link
+              to="/trades"
+              class="navbar-item"
+              v-if="isUserLoggedIn && !!user!.isAdmin"
+            >
+              <span>Trades</span>
+            </router-link>
             <hr class="navbar-divider" />
             <a class="navbar-item"> Report an issue </a>
           </div>

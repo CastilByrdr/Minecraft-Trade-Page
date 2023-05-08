@@ -1,3 +1,4 @@
+import Trades from "@/views/Trades.vue"
 import CreatePost from "@/components/CreatePost.vue";
 import ItemCategories from "@/views/ItemCategories.vue";
 import Login from "@/views/Login.vue";
@@ -34,6 +35,12 @@ const router = createRouter({
       path: "/users",
       name: "users",
       component: Users,
+      beforeEnter: authGuard,
+    },
+    {
+      path: "/trades",
+      name: "trades",
+      component: Trades,
       beforeEnter: authGuard,
     },
     // {

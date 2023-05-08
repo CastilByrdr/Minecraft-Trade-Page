@@ -12,7 +12,7 @@ const trades = ref<Trade[]>([]);
 
 reloadTrades();
 
-async function reloadTrades() {
+export async function reloadTrades() {
   trades.value = await getTrades();
 }
 

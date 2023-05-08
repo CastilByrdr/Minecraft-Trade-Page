@@ -1,6 +1,7 @@
 import { API_URL } from "@/envrironment/environment";
 import type { CreateTradeModel, Trade } from "@/model/Trade";
 import axios from "axios";
+import { trades } from "./QuickUserModalService";
 
 export async function createTrade(
   createTradeModel: CreateTradeModel
@@ -15,6 +16,11 @@ export async function createTrade(
 export async function getTrades(): Promise<Trade[]> {
   const { data } = await axios.get<Trade[]>(API_URL + "/trade");
   return data;
+}
+
+export async function reloadTrades() {
+  const { data } = await axios.get<Trade[]>(API_URL + "/trade");
+  trades.value = data;
 }
 
 export async function getTradesByUser(userId: number): Promise<Trade[]> {
