@@ -45,9 +45,9 @@ async function onUsernameClicked(user: User){
       </button>
     </RouterLink>
   </div>
-  <div class="columns mt-5">
-    <div class="column" v-for="trade in trades">
-      <div class="card">
+  <div class="tradelist mt-5">
+    <div class="card" v-for="trade in trades">
+      <!-- <div class="card"> -->
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -99,12 +99,13 @@ async function onUsernameClicked(user: User){
           </router-link>
           <br />
         </footer>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
 <style scoped>
+
 button {
   font-family: "Minecraft";
 }
@@ -121,5 +122,22 @@ button {
 .content {
   display: inline-block;
   vertical-align: middle;
+}
+
+.tradelist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1.50rem;
+}
+
+.tradelist .card{
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+}
+
+.tradelist .card .card-content {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
 }
 </style>
